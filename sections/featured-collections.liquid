@@ -1,0 +1,47 @@
+{{ 'featured-collections.css' | asset_url | stylesheet_tag }}
+{{ 'https://unpkg.com/swiper@8/swiper-bundle.min.css' | stylesheet_tag }}
+
+<section class="featured">
+    <div class="container">
+        <div class="swiper featured-swiper">
+            <div class="swiper-wrapper">
+                {% for product in collections[section.settings.featured_collection].products %}
+                    <div class="featured__item swiper-slide">
+                        <a class="featured__img" href="{{ product.url | within: collection }}">
+                            <img src="{{ product.featured_image.src | image_url }}" alt="{{ product.featured_image.alt | escape }}">
+                        </a>
+                        <a class="featured__title" href="{{ product.url | within: collection }}">
+                            <p>{{ product.title }}</p>
+                            <span class="arrow">{% render "arrow" %}</span>
+                        </a>
+                        {% unless product.available %}<br><strong>sold out</strong>{% endunless %}
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="swiper-scrollbar featured-scrollbar"></div>
+        </div>
+    </div>
+</section>
+
+{% schema %}
+{
+    "name": "Featured Collections",
+    "class": "featured-collection",
+    "settings": [
+        {
+           "type": "collection",
+           "id": "featured_collection",
+           "label": "Collection"
+        }
+    ],
+    "presets": [
+        {
+            "category": "Collection",
+            "name": "Featured Collection"
+        }
+    ]
+}
+{% endschema %}
+
+{{ 'https://unpkg.com/swiper@8/swiper-bundle.min.js' | script_tag }}
+{{ 'slider.js' | asset_url | script_tag }}

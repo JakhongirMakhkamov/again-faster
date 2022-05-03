@@ -1,0 +1,26 @@
+{{ 'announcement-bar.css' | asset_url | stylesheet_tag }}
+
+<div class="container">
+    <p class="announcement-text">{{ section.settings.announcement-bar | upcase }}</p>
+</div>
+
+{% schema %}
+{
+   "name": "Announcement Bar",
+   "class": "announcement-bar",
+   "settings": [
+        {
+           "type": "text",
+           "id": "announcement-bar",
+           "default": "Announcement Text",
+           "label" : "Announcement Bar"
+        }
+   ],
+  "presets": [
+      {
+          "category": "Announcement Bar",
+          "name":"Announcement Bar"
+      }
+  ]
+}
+{% endschema %}

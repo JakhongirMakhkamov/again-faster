@@ -1,0 +1,48 @@
+{{ 'header.css' | asset_url | stylesheet_tag }}
+
+{% if shop.customer_accounts_enabled %}
+    {% if customer %}
+        <a href="/account">account</a>
+        {{ 'log out'  | customer_logout_link }}
+    {% else %}
+        {{ 'log in ' | customer_login_link }}
+        {{ 'register' | customer_register_link }}
+    {% endif %}
+{% endif %}
+
+<nav>
+    <div class="container container--nav {% if template == 'index' %} nav--white {% endif %}">
+        <a href="" class="nav__logo">{% render "logo" %}</a>
+        <ul class="nav__links">
+            {% for link in linklists.main-menu.links %}
+                {% assign child_list_handle = link.title | handleize %}
+                    {% if linklists[child_list_handle].links != blank %}
+                        <li class="nav__link">
+                            <a href="{{ link.url }}">{{ link.title }}</a>
+                        </li>
+                        [{% for childlink in linklists[child_list_handle].links %}
+                            <li class="nav__link">
+                                <a href="{{ childlink.url }}">{{ childlink.title | escape }}</a>
+                            </li>
+                        {% endfor %}]
+                    {% else %}
+                        <li class="nav__link">
+                            <a href="{{ link.url }}">{{ link.title }}</a>
+                        </li>
+                    {% endif %}
+            {% endfor %}
+        </ul>
+        <div class="nav__actions">
+            <a href="" class="search__action">{% render "search" %}</a>
+            <a href="" class="account__action">{% render "account" %}</a>
+            <a href="" class="bag__action">{% render "bag" %}</a>
+        </div>
+    </div>
+</nav>
+
+{% schema %}
+{
+   "name": "Header",
+   "class": "nav"
+}
+{% endschema %}

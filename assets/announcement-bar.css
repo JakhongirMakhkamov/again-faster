@@ -1,0 +1,10 @@
+.announcement-text {
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+  font-weight: 300;
+  line-height: 20.16px;
+  letter-spacing: 0.16em;
+}
