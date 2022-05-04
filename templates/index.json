@@ -1,11 +1,17 @@
 {
   "sections": {
     "hero": {
-      "type": "hero"
+      "type": "hero",
+      "settings": {}
     },
     "featured-collections": {
-      "type": "featured-collections"
+      "type": "featured-collections",
+      "settings": {}
+    },
+    "banner": {
+      "type": "banner",
+      "settings": {}
     }
   },
-  "order": ["hero", "featured-collections"]
+  "order": ["hero", "featured-collections", "banner"]
 }

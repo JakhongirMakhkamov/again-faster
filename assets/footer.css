@@ -1,0 +1,95 @@
+footer {
+  padding: 80px;
+  background-color: #f1f1f1;
+}
+
+.container--footer {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.footer__logo {
+  position: absolute;
+  top: 21%;
+  left: 0;
+  z-index: 1;
+}
+
+.container--footer form {
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+}
+
+form {
+  width: 40%;
+}
+
+.footer__links {
+  width: 25%;
+}
+
+form label {
+  font-size: 12px;
+  line-height: 14.08px;
+  letter-spacing: 0.165em;
+}
+
+.form__input {
+  display: flex;
+  gap: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #c4c4c4;
+  margin-top: 28px;
+  margin-bottom: 28px;
+}
+
+.form__input input {
+  width: 100%;
+  font-size: 14px;
+  line-height: 19.85px;
+  border: 0;
+  background: none;
+}
+
+.form__input input:focus {
+  outline: none;
+}
+
+.form__arrow a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.form__arrow svg path {
+  fill: #000;
+}
+
+.footer__socials {
+  display: flex;
+  gap: 18px;
+}
+
+.column-title {
+  font-size: 12px;
+  line-height: 14.08px;
+  letter-spacing: 0.165em;
+  color: #353535;
+  margin-bottom: 32px;
+}
+
+.footer__nav {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  gap: 12px;
+  font-size: 14px;
+  line-height: 23.45px;
+}
+
+.footer__nav a {
+  text-decoration: none;
+  color: #7e7e7e;
+}

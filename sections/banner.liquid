@@ -1,0 +1,68 @@
+{{ 'section-banner.css' | asset_url | stylesheet_tag }}
+
+<div class="banner__container container ">
+	<img src="{{ section.settings.image1 | image_url }}" class="banner__main-img" alt="{{ section.settings.image1.alt | escape }}">
+	<div class="banner__rich-text">
+		<img src="{{ section.settings.image2 | image_url }}"  alt="{{ section.settings.image2.alt | escape }}">
+    	<h3 class="banner__subtitle f--subtitle">{{ section.settings.subtitle | upcase }}</h3>
+    	<h2 class="banner__title">{{ section.settings.title | upcase }}</h2>
+		<div class="banner__desc">{{ section.settings.description }}</div>
+		<a href="{{ section.settings.button_link }}" class="banner__btn button-underlined">
+      		<span>{{ section.settings.button_label | upcase }}</span>
+		</a>
+  	</div>
+</div>
+
+{% schema %}
+	{
+		"name": "Banner",
+		"class": "banner",
+		"tag": "section",
+		"settings": [
+			{
+				"type": "image_picker",
+				"id": "image1",
+				"label": "Banner Image 1"
+			},
+      {
+				"type": "image_picker",
+				"id": "image2",
+				"label": "Banner Image 2"
+			},
+			{
+				"type": "text",
+				"id": "subtitle",
+				"default": "Example Subtitle",
+				"label": "Banner subtitle"
+			},
+			{
+				"type": "text",
+				"id": "title",
+				"default": "Example Heading",
+				"label": "Banner title"
+			},
+			{
+				"type": "text",
+				"id": "button_label",
+				"default": "Button",
+				"label": "Banner Button Label"
+			},
+			{
+				"type": "url",
+				"id": "button_link",
+				"label": "Banner Button Link"
+			},
+      {
+        "type": "richtext",
+        "id": "description",
+        "label": "Banner Description"
+      }
+		],
+		"presets": [
+			{
+				"category": "Banner",
+				"name":"Banner 2 img"
+			}
+		]
+	}
+{% endschema %}

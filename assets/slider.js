@@ -4,5 +4,6 @@ const swiper = new Swiper(".featured-swiper", {
   spaceBetween: 16,
   scrollbar: {
     el: ".featured-scrollbar",
+    dragSize: 215,
   },
 });

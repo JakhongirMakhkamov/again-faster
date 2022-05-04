@@ -1,0 +1,68 @@
+{{ 'footer.css' | asset_url | stylesheet_tag }}
+
+<div class="container container--footer">
+    <span class="footer__logo">{% render "short-logo" %}</span>
+    {% form 'contact' %}
+        <div class="email">
+            <label for="email">{{ section.settings.form_title | upcase }}</label>
+            <div class="form__input">
+                <input type="email" name="contact[email]" id="email" placeholder="Enter your email" />
+                <span class="form__arrow"><a href="">{% render "arrow" %}</a></span>
+            </div>
+        </div>
+        <div class="footer__socials">
+            {% render "facebook" %}
+            {% render "instagram" %}
+            {% render "mail" %}
+        </div>
+    {% endform %}
+    {% for block in section.blocks %}
+        {% assign item = block.settings %}
+        {% if block.type == "link_list" %}
+            <div class="footer__links">
+                <p class="column-title">{{ item.title | upcase }}</p>
+                {% assign footer__linklist = item.menu %}
+                <ul class="footer__nav">
+                    {% for link in linklists[footer__linklist].links %}
+                        <li class="footer__nav__link">
+                            <a href="{{ link.url }}">{{ link.title | escape }}</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+    {% endfor %}
+</div>
+
+{% schema %}
+{
+   "name": "Footer",
+   "settings": [
+        {
+           "type": "text",
+           "id": "form_title",
+           "label": "Form Label",
+           "default": "Newsletter"
+        }
+   ],
+   "blocks": [
+        {
+           "type": "link_list",
+           "name": "Navigation",
+           "settings": [
+                {
+                    "type": "text",
+                    "id": "title",
+                    "label": "Title",
+                    "default": "Footer Title"
+                },
+                {
+                    "type": "link_list",
+                    "id": "menu",
+                    "label": "Menu"
+                }
+           ]
+        }
+   ]
+}
+{% endschema %}
