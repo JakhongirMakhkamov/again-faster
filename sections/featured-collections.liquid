@@ -1,21 +1,11 @@
-{{ 'featured-collections.css' | asset_url | stylesheet_tag }}
 {{ 'https://unpkg.com/swiper@8/swiper-bundle.min.css' | stylesheet_tag }}
 
 <section class="featured">
     <div class="container">
         <div class="swiper featured-swiper">
             <div class="swiper-wrapper">
-                {% for product in collections[section.settings.featured_collection].products %}
-                    <div class="featured__item swiper-slide">
-                        <a class="featured__img" href="{{ product.url | within: collection }}">
-                            <img src="{{ product.featured_image.src | image_url }}" alt="{{ product.featured_image.alt | escape }}">
-                        </a>
-                        <a class="featured__title" href="{{ product.url | within: collection }}">
-                            <p>{{ product.title }}</p>
-                            <span class="arrow">{% render "arrow" %}</span>
-                        </a>
-                        {% unless product.available %}<br><strong>sold out</strong>{% endunless %}
-                    </div>
+                {% for block in section.blocks %}
+                    {% render "collection-card", collectionData: block.settings.collection, class: "swiper-slide" %}
                 {% endfor %}
             </div>
             <div class="swiper-scrollbar featured-scrollbar"></div>
@@ -27,11 +17,17 @@
 {
     "name": "Featured Collections",
     "class": "featured-collection",
-    "settings": [
+    "blocks": [
         {
            "type": "collection",
-           "id": "featured_collection",
-           "label": "Collection"
+            "name": "Collections",
+            "settings": [
+                {
+                    "type": "collection",
+                    "id": "collection",
+                    "label": "Collection Name"
+                }
+            ]
         }
     ],
     "presets": [

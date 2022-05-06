@@ -10,39 +10,39 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  padding-bottom: 40px;
+  padding-bottom: 4rem;
 }
 
 .hero__content {
-  max-width: 557px;
+  max-width: 55.7rem;
   color: #fff;
 }
 
 .intro__title {
-  font-size: 60px;
+  font-size: 6rem;
   line-height: 130%;
   letter-spacing: 0.24em;
-  margin-bottom: 24px;
+  margin-bottom: 2.4rem;
 }
 
 .intro__subtitle {
-  font-size: 14px;
+  font-size: 1.4rem;
   line-height: 167.5%;
-  margin-bottom: 40px;
+  margin-bottom: 4rem;
 }
 
 .intro__btn {
   width: fit-content;
   display: flex;
   align-items: center;
-  gap: 108px;
-  font-size: 12px;
-  line-height: 16px;
+  gap: 10.8rem;
+  font-size: 1.2rem;
+  line-height: 1.6rem;
   text-decoration: none;
   letter-spacing: 0.175em;
   color: inherit;
-  padding: 21px 24px;
-  border: 1px solid #fff;
+  padding: 2.1rem 2.4rem;
+  border: 0.1rem solid #fff;
   transition: 0.2s linear;
 }
 

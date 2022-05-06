@@ -2,7 +2,7 @@
 
 {% if shop.customer_accounts_enabled %}
     {% if customer %}
-        <a href="/account">account</a>
+        <a href="">account</a>
         {{ 'log out'  | customer_logout_link }}
     {% else %}
         {{ 'log in ' | customer_login_link }}
@@ -10,8 +10,8 @@
     {% endif %}
 {% endif %}
 
-<nav>
-    <div class="container container--nav {% if template == 'index' %} nav--white {% endif %}">
+<nav class="{% if template == 'index' %} nav--white {% endif %}">
+    <div class="container container--nav">
         <a href="" class="nav__logo">{% render "logo" %}</a>
         <ul class="nav__links">
             {% for link in linklists.main-menu.links %}

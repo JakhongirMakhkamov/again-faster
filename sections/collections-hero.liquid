@@ -1,0 +1,20 @@
+{{ 'collections-hero.css' | asset_url | stylesheet_tag }}
+
+<section class="collections-hero">
+    <div class="container container--collections-hero">
+        <div class="collections__content">
+            <h3 class="collections__suptitle">{{ collection.metafields.accentuate.eyebrow | upcase }}</h3>
+            <h1 class="collections__title">{{ collection.metafields.accentuate.title | upcase }}</h1>
+            <a href="{{ collection.metafields.accentuate.cta_url }}" class="collections__btn">
+                <span>{{ collection.metafields.accentuate.cta_label | upcase }}</span>
+                {% render "arrow" %}
+            </a>
+        </div>
+        <div class="collections__heroes">
+            <img class="hero-img hero-img1" src="{{ collection.metafields.accentuate.image_1[0].src }}" alt="">
+            <img class="hero-img hero-img2" src="{{ collection.metafields.accentuate.image_2[0].src }}" alt="">
+        </div>
+    </div>
+</section>
+
+

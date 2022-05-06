@@ -1,0 +1,9 @@
+<div class="featured__item {% if class %} {{ class }} {% endif %}">
+    <a class="featured__img" href="{{ collectionData.url }}">
+        <img src="{{ collectionData.featured_image.src | image_url }}" alt="{{ collectionData.featured_image.alt | escape }}">
+    </a>
+    <a class="featured__title" href="{{ collectionData.url }}">
+        <p>{{ collectionData.title }}</p>
+        <span class="arrow">{% render "arrow" %}</span>
+    </a>
+</div>

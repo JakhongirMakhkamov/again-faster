@@ -1,0 +1,9 @@
+.collections {
+  padding: 0 0 8rem;
+}
+
+.container--collections {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 4rem 1.6rem;
+}

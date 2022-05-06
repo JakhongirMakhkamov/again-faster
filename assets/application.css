@@ -9,13 +9,18 @@ Note: "@import" rules aren’t supported. */
   padding: 0;
 }
 
+html {
+  font-size: 62.5%;
+}
+
 body {
-  font-family: sans-serif;
+  font-family: "Open sans", sans-serif;
+  font-size: 1.4rem;
 }
 
 .container {
   width: 100%;
-  max-width: 1440px;
+  max-width: 144rem;
   margin: 0 auto;
-  padding: 0 40px;
+  padding: 0 4rem;
 }

@@ -1,5 +1,5 @@
 .featured {
-  padding: 60px 0;
+  padding: 6rem 0;
 }
 
 .featured__item {
@@ -10,31 +10,32 @@
 
 .featured__item img {
   max-width: 100%;
-  width: 328px;
-  height: 334px;
+  width: 32.8rem;
+  height: auto;
 }
 
 .featured__title {
   position: relative;
-  color: #000;
-  font-size: 12px;
+  font-family: "Oswald", sans-serif;
+  font-size: 1.2rem;
   font-weight: 300;
-  line-height: 20.16px;
+  line-height: 2.016rem;
   letter-spacing: 0.16em;
+  color: #000;
   text-decoration: none;
   text-transform: uppercase;
 }
 
 .arrow {
   position: absolute;
-  top: 1px;
-  right: -30px;
+  top: 0.1rem;
+  right: -3rem;
   overflow: hidden;
 }
 
 .arrow svg {
   display: block;
-  transform: translate(-20px);
+  transform: translate(-2rem);
   transition: 0.2s linear;
 }
 
@@ -48,14 +49,14 @@
 }
 
 .featured-swiper .swiper-wrapper {
-  margin-bottom: 40px;
+  margin-bottom: 4rem;
 }
 
 .featured-scrollbar {
   bottom: 0 !important;
   left: 0 !important;
   width: 100% !important;
-  height: 2px !important;
+  height: 0.2rem !important;
   margin: 0 auto;
   border-radius: 0 !important;
   background-color: #f1f1f1 !important;
