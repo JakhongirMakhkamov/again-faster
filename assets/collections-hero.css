@@ -50,6 +50,10 @@
   background: #000;
 }
 
+.collections__btn span {
+  height: 1.6rem;
+}
+
 .collections__btn path {
   fill: #000;
 }

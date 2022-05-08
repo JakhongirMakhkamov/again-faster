@@ -1,11 +1,8 @@
 {
   "sections": {
-    "collections-hero": {
-      "type": "collections-hero"
-    },
     "collections": {
       "type": "collections"
     }
   },
-  "order": ["collections-hero", "collections"]
+  "order": ["collections"]
 }

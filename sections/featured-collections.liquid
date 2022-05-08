@@ -1,22 +1,21 @@
 {{ 'https://unpkg.com/swiper@8/swiper-bundle.min.css' | stylesheet_tag }}
 
-<section class="featured">
-    <div class="container">
-        <div class="swiper featured-swiper">
-            <div class="swiper-wrapper">
-                {% for block in section.blocks %}
-                    {% render "collection-card", collectionData: block.settings.collection, class: "swiper-slide" %}
-                {% endfor %}
-            </div>
-            <div class="swiper-scrollbar featured-scrollbar"></div>
+<div class="container">
+    <div class="swiper featured-swiper">
+        <div class="swiper-wrapper">
+            {% for block in section.blocks %}
+                {% render "collection-card", collectionData: block.settings.collection, class: "swiper-slide" %}
+            {% endfor %}
         </div>
+        <div class="swiper-scrollbar featured-scrollbar"></div>
     </div>
-</section>
+</div>
 
 {% schema %}
 {
     "name": "Featured Collections",
-    "class": "featured-collection",
+    "class": "featured",
+    "tag": "section",
     "blocks": [
         {
            "type": "collection",

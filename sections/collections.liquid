@@ -1,10 +1,2 @@
-{{ 'collections.css' | asset_url | stylesheet_tag }}
-
-<section class="collections">
-    <div class="container container--collections">
-        {% assign collectionsAll = collection.metafields.accentuate.best_sellers | split: '|' %}
-        {% for collectionItem in collectionsAll%}
-            {% render "collection-card", collectionData: collections[collectionItem] %}
-        {% endfor %}
-    </div>
-</section>
+{% render "collections-hero" %}
+{% render "collections-list" %}
