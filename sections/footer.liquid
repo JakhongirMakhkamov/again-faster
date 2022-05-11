@@ -1,19 +1,19 @@
 {{ 'footer.css' | asset_url | stylesheet_tag }}
 
 <div class="container container--footer">
-    <span class="footer__logo">{% render "short-logo" %}</span>
+    <span class="footer__logo">{% render "icon-short-logo" %}</span>
     {% form 'contact' %}
         <div class="email">
             <label for="email">{{ section.settings.form_title | upcase }}</label>
             <div class="form__input">
                 <input type="email" name="contact[email]" id="email" placeholder="Enter your email" />
-                <span class="form__arrow"><a href="">{% render "arrow" %}</a></span>
+                <span class="form__arrow"><a href="">{% render "icon-arrow" %}</a></span>
             </div>
         </div>
         <div class="footer__socials">
-            {% render "facebook" %}
-            {% render "instagram" %}
-            {% render "mail" %}
+            {% render "icon-facebook" %}
+            {% render "icon-instagram" %}
+            {% render "icon-mail" %}
         </div>
     {% endform %}
     {% for block in section.blocks %}

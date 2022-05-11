@@ -1,0 +1,129 @@
+.container--product {
+  display: flex;
+  justify-content: space-between;
+  gap: 6rem;
+  padding-left: 0;
+  padding-right: 13.5rem;
+}
+
+.product__gallery {
+  max-width: 72rem;
+}
+
+.product__gallery.swiper {
+  margin: 0;
+}
+
+.product__description .swiper-pagination {
+  display: flex;
+  width: fit-content !important;
+  height: fit-content;
+  flex-direction: column;
+  gap: 0.8rem;
+  top: 50%;
+  left: -29% !important;
+  bottom: auto !important;
+  transform: translateY(-50%);
+}
+
+.product__description .swiper-pagination-bullet {
+  background: #f1f1f1;
+  opacity: 1;
+}
+
+.product__description .swiper-pagination-bullet-active {
+  background: #353535;
+}
+
+.pdp-img {
+  max-width: 100%;
+}
+
+.product__description {
+  position: relative;
+  max-width: 44.2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.product__title {
+  font-size: 2.4rem;
+  font-weight: 600;
+  line-height: 3.12rem;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.8rem;
+}
+
+.product__cost {
+  line-height: 2.345rem;
+  margin-bottom: 1.3rem;
+}
+
+.product__reviews {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-bottom: 1.2rem;
+}
+
+.review__text {
+  margin-left: 0.4rem;
+}
+
+.product__info {
+  line-height: 2.345rem;
+  margin-bottom: 1.6rem;
+}
+
+.affirm-text {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin-bottom: 2.4rem;
+}
+
+.add-to-cart {
+  width: 100%;
+}
+
+.product__options {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.8rem;
+}
+
+.product__option input[type="radio"] {
+  opacity: 0;
+  position: fixed;
+  width: 0;
+}
+
+.product__option label {
+  width: 100%;
+  display: inline-block;
+  text-align: center;
+  padding: 1.6rem;
+  line-height: 2.345rem;
+  border: 1px solid #f1f1f1;
+}
+
+.product__option .sold-out {
+  color: #c4c4c4;
+  text-decoration: line-through;
+}
+
+.product__option input[type="radio"]:checked + label {
+  border-color: #000;
+}
+
+.product__btn {
+  width: 100%;
+  font-family: "Open Sans", sans-serif;
+  text-transform: uppercase;
+  color: #fff;
+  background: #000;
+  border: 0;
+  margin: 2.4rem 0;
+  padding: 1.4rem 0;
+}

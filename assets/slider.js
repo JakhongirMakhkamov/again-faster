@@ -7,3 +7,11 @@ const swiper = new Swiper(".featured-swiper", {
     dragSize: 215,
   },
 });
+
+const pdp_swiper = new Swiper(".product__gallery", {
+  rewind: true,
+  slidesPerView: 1,
+  pagination: {
+    el: ".swiper-pagination",
+  },
+});

@@ -1,5 +1,9 @@
+.announcement-bar {
+  background-color: #fbfbfb;
+  padding: 1rem 0;
+}
+
 .announcement-text {
-  height: 4rem;
   display: flex;
   justify-content: center;
   align-items: center;

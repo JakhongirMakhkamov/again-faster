@@ -1,0 +1,74 @@
+{{ 'product.css' | asset_url | stylesheet_tag }}
+{{ 'https://unpkg.com/swiper@8/swiper-bundle.min.css' | stylesheet_tag }}
+
+<section class="product">
+    <div class="container container--product">
+        {% assign current_variant = product.selected_or_first_available_variant %}
+        {% assign featured_image = current_variant.featured_image | default: product.featured_image %}
+        <div class="product__gallery swiper">
+            <div class="swiper-wrapper">
+                {% if product.has_only_default_variant %}
+                    <div class="swiper-slide">
+                        <img class="pdp-img" src="{{ featured_image | image_url }}" alt="{{ featured_image.alt | escape }}" id="ProductPhotoImg"> 
+                    </div>
+                {% else %}
+                    {% for variant in product.variants %}
+                        <div class="swiper-slide">
+                            <img class="pdp-img" src="{{ variant.image.src | image_url }}" alt="{{ variant.title | escape }}" id="ProductPhotoImg">
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+        <div class="product__description">
+            <div class="swiper-pagination"></div>
+            <h1 class="product__title">{{ product.title | upcase }}</h1>
+            <p class="product__cost">{{ current_variant.price | money }}</p>
+            <div class="product__reviews">
+                <img src="{{ product.metafields.accentuate.review[0].src }}" alt="star-icon">
+                <img src="{{ product.metafields.accentuate.review[0].src }}" alt="star-icon">
+                <img src="{{ product.metafields.accentuate.review[0].src }}" alt="star-icon">
+                <img src="{{ product.metafields.accentuate.review[0].src }}" alt="star-icon">
+                <img src="{{ product.metafields.accentuate.review[0].src }}" alt="star-icon">
+                <p class="review__text">18 reviews</p>
+            </div>
+            <div class="affirm-text">
+                <img src= "{{ "affirm.png" | asset_url }}" alt="affirm-icon">
+                <p>pay as low as 56/mo Learn More</p>
+            </div>
+            <div class="product__info">{{ product.description }}</div>
+            <form class="add-to-cart" action="/cart/add" method="post" enctype="multipart/form-data" id="AddToCartForm">
+                <!-- <select name="id" id="productSelect">
+                    {% for variant in product.variants %}
+                        {% if variant.available %}
+                            <option value="{{ variant.id }}">
+                            {{ variant.title }} - {{ variant.price | money_with_currency }}
+                            </option>
+                        {% else %}
+                            <option disabled="disabled">
+                            {{ variant.title }} - sold out
+                            </option>
+                        {% endif %}
+                    {% endfor %}
+                </select> -->
+                <div class="product__options">
+                    {% for variant in product.variants %}
+                        <div class="product__option">
+                            {% if variant.available %}
+                                <input type="radio" name="id" id="variant-{{ forloop.index }}"  {% if forloop.index == 1 %} checked {% endif %} value="{{ variant.id }}">
+                                <label for="variant-{{ forloop.index }}">{{ variant.title }} {{ product.title }}</label>
+                            {% else %}
+                                <label class="sold-out" for="variant-{{ forloop.index }}">{{ variant.title }} {{ product.title }}</label>
+                            {% endif %}
+                        </div>
+                    {% endfor %}
+                </div>
+                <input style="display: none;" type="number" id="Quantity" name="quantity" value="1" min="1">
+                <button class="product__btn" type="submit" name="add" id="AddToCart">Add to cart</button>
+            </form>
+        </div>
+    </div>
+</section>
+
+{{ 'https://unpkg.com/swiper@8/swiper-bundle.min.js' | script_tag }}
+{{ 'slider.js' | asset_url | script_tag }}

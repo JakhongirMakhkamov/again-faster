@@ -1,0 +1,100 @@
+.collection__item {
+  position: relative;
+  max-width: 44.3rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.product-img {
+  max-width: 100%;
+}
+
+.product-img--sold {
+  opacity: 0.5;
+}
+
+.product-title {
+  font-family: "Oswald", sans-serif;
+  font-size: 1.2rem;
+  font-weight: 300;
+  line-height: 2.16rem;
+  letter-spacing: 0.16em;
+  color: #000;
+  text-decoration: none;
+}
+
+.product-cost {
+  font-family: "Oswald", sans-serif;
+  font-size: 1.2rem;
+  font-weight: 300;
+  line-height: 2.16rem;
+  letter-spacing: 0.16em;
+  color: #353535;
+}
+
+.product-cost--sold {
+  text-decoration: line-through;
+}
+
+.product-old-cost {
+  color: #353535;
+  opacity: 0.6;
+  text-decoration: line-through;
+  margin-right: 1.1rem;
+}
+
+.product-tags {
+  position: absolute;
+  top: 1.44%;
+  left: 1.8%;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.product-tag {
+  width: 9rem;
+  font-size: 1.2rem;
+  line-height: 2.01rem;
+  text-align: center;
+  padding: 0.4rem 0;
+}
+
+.tag--best-seller {
+  background: #000;
+  color: #fff;
+}
+
+.tag--free-shipping {
+  background: #fff;
+  color: #000;
+}
+
+.tag--pre-order {
+  border: 1px solid #c4c4c4;
+}
+
+.tag--sale {
+  background: #9e0404;
+  color: #fff;
+}
+
+.product-sold-out-text {
+  width: fit-content;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.2rem;
+  line-height: 2.01rem;
+  background: #fff;
+  padding: 0.4rem 1.6rem;
+  pointer-events: none;
+}
+
+.product-reviews {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin: 0.8rem 0;
+}

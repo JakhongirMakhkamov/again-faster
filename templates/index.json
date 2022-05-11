@@ -1,7 +1,7 @@
 {
   "sections": {
     "hero": {
-      "type": "hero",
+      "type": "main-hero",
       "settings": {}
     },
     "featured-collections": {
@@ -9,7 +9,7 @@
       "settings": {}
     },
     "banner": {
-      "type": "banner",
+      "type": "main-banner",
       "settings": {}
     }
   },

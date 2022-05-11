@@ -1,0 +1,44 @@
+<div class="collection__item">
+    <a href="{{ productItem.url | within: collection }}">
+        <img class="product-img {% if productItem.available == false %}product-img--sold{% endif %}" src="{{ productItem.featured_image.src | image_url }}" alt="{{ productItem.featured_image.alt | escape }}">
+    </a>
+    <a href="{{ productItem.url | within: collection }}" class="product-title">{{ productItem.title | upcase }}</a>
+    <div class="product-reviews">
+        <img src="{{ productItem.metafields.accentuate.review[0].src }}" alt="star-icon">
+        <img src="{{ productItem.metafields.accentuate.review[0].src }}" alt="star-icon">
+        <img src="{{ productItem.metafields.accentuate.review[0].src }}" alt="star-icon">
+        <img src="{{ productItem.metafields.accentuate.review[0].src }}" alt="star-icon">
+        <img src="{{ productItem.metafields.accentuate.review[0].src }}" alt="star-icon">
+    </div>
+    <p class="product-cost {% if productItem.available == false %}product-cost--sold{% endif %}">
+        {% if productItem.price_varies %}
+            {% if productItem.compare_at_price %}
+                <span class="product-old-cost">
+                   {{ productItem.compare_at_price_max | money }}
+                </span>
+               <span>{{ productItem.price | money }}</span>
+            {% else %}
+                {{ productItem.price_min | money }} - {{ productItem.price_max | money }}
+            {% endif %}
+        {% else %}
+            {% if productItem.compare_at_price %}
+                <span class="product-old-cost">
+                    {{ productItem.compare_at_price_max | money }}
+                </span>
+                <span>{{ productItem.price | money }}</span>
+            {% else %}
+                {{ productItem.price | money }}
+            {% endif %}
+        {% endif %}
+    </p>
+    <div class="product-tags">
+        {% for tag in productItem.tags %}
+            <span class="product-tag tag--{{ tag | handleize}}">
+                {{ tag }}
+            </span>
+        {% endfor %}
+    </div>
+    {% unless productItem.available %}
+        <p class="product-sold-out-text">Sold Out - Get notified when back in stock</p>
+    {% endunless %}
+</div>
