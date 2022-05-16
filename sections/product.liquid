@@ -1,2 +1,58 @@
 {% render "product-header" %}
-{% render "product-info" %}
+
+{% schema %}
+{
+   "name": "Product Header",
+   "class": "product",
+   "tag": "section",
+   "settings": [
+        {
+           "type": "text",
+           "id": "review",
+           "default": "18 reviews",
+           "label" : "Reviews"
+        },
+        {
+            "type": "text",
+            "id": "affirm_text",
+            "default": "pay as low as 56/mo",
+            "label" : "Affirm Text"
+        },
+        {
+            "type": "text",
+            "id": "affirm_label",
+            "default": "Learn More",
+            "label": "Affirm Label"
+        },
+        {
+            "type": "url",
+            "id": "affirm_link",
+            "label": "Affirm Link"
+        },
+        {
+            "type": "text",
+            "id": "bonus",
+            "default": "Available for Free shipping!",
+            "label" : "Bonus"
+         },
+        {
+            "type": "text",
+            "id": "suggestions",
+            "default": "Frequently Bough With",
+            "label" : "Suggestions"
+         },
+         {
+            "type": "text",
+            "id": "btn_label",
+            "default": "Add to Cart",
+            "label" : "Button Label"
+         }
+   ],
+  "presets": [
+      {
+          "category": "Product Header",
+          "name":"Product Header"
+      }
+  ]
+}
+{% endschema %}

@@ -1,79 +1,77 @@
 {{ 'product-header.css' | asset_url | stylesheet_tag }}
 {{ 'https://unpkg.com/swiper@8/swiper-bundle.min.css' | stylesheet_tag }}
 
-<section class="product">
-    <div class="container container--product">
-        {% assign current_variant = product.selected_or_first_available_variant %}
-        {% assign featured_image = current_variant.featured_image | default: product.featured_image %}
-        <div class="product__gallery">
-            <div class="gallery-swiper swiper">
-                <div class="swiper-wrapper">
-                    {% if product.has_only_default_variant %}
-                        <div class="swiper-slide">
-                            <img class="pdp-img" src="{{ featured_image | image_url }}" alt="{{ featured_image.alt | escape }}" id="ProductPhotoImg"> 
-                        </div>
-                    {% else %}
-                        {% for variant in product.variants %}
-                            <div class="swiper-slide">
-                                <img class="pdp-img" src="{{ variant.image.src | image_url }}" alt="{{ variant.title | escape }}" id="ProductPhotoImg">
-                            </div>
-                        {% endfor %}
-                    {% endif %}
-                </div>
-            </div>
-            <div class="swiper-pagination"></div>
-        </div>
-        <div class="product__description">
-            <h1 class="product__title">{{ product.title | upcase }}</h1>
-            <p id="product-cost" class="product__cost">{{ current_variant.price | money }}</p>
-            <div class="product__reviews">
-                <img src="{{ product.metafields.accentuate.review[0].src }}" alt="star-icon">
-                <img src="{{ product.metafields.accentuate.review[0].src }}" alt="star-icon">
-                <img src="{{ product.metafields.accentuate.review[0].src }}" alt="star-icon">
-                <img src="{{ product.metafields.accentuate.review[0].src }}" alt="star-icon">
-                <img src="{{ product.metafields.accentuate.review[0].src }}" alt="star-icon">
-                <p class="review__text">18 reviews</p>
-            </div>
-            <div class="affirm-text">
-                <img src= "{{ "affirm.png" | asset_url }}" alt="affirm-icon">
-                <p>pay as low as 56/mo Learn More</p>
-            </div>
-            <div class="product__info">{{ product.description }}</div>
-            <form class="add-to-cart" action="/cart/add" method="post" enctype="multipart/form-data" id="AddToCartForm">
-                <div class="product__options">
+<div class="container container--product">
+    {% assign current_variant = product.selected_or_first_available_variant %}
+    {% assign featured_image = current_variant.featured_image | default: product.featured_image %}
+    <div class="product__gallery">
+        <div class="gallery-swiper swiper">
+            <div class="swiper-wrapper">
+                {% if product.has_only_default_variant %}
+                    <div class="swiper-slide">
+                        <img class="pdp-img" src="{{ featured_image | image_url }}" alt="{{ featured_image.alt | escape }}" id="ProductPhotoImg"> 
+                    </div>
+                {% else %}
                     {% for variant in product.variants %}
-                        <div class="product__option">
-                            {% if variant.available %}
-                                <input class="variant-radio" type="radio" name="id" data-variant-price="{{ variant.price | money }}" id="variant-{{ forloop.index }}" {% if forloop.index == 1 %} checked {% endif %} value="{{ variant.id }}">
-                                <label for="variant-{{ forloop.index }}">{{ variant.title }} {{ product.title }}</label>
-                            {% else %}
-                                <label class="sold-out" for="variant-{{ forloop.index }}">{{ variant.title }} {{ product.title }}</label>
-                            {% endif %}
+                        <div class="swiper-slide">
+                            <img class="pdp-img" src="{{ variant.image.src | image_url }}" alt="{{ variant.title | escape }}" id="ProductPhotoImg">
                         </div>
                     {% endfor %}
-                </div>
-                <input style="display: none;" type="number" id="Quantity" name="quantity" value="1" min="1">
-                <p class="free-shipping"><em>Available for Free shipping!</em></p>
-                <button class="product__btn" type="submit" name="add" id="AddToCart">Add to cart</button>
-            </form>
-            <div class="frequenly-bought-products">
-                <h2 class="frequently-bought__title">Frequently bought with</h2>
-                {% assign frequent = product.metafields.accentuate.frequently_bought | split: '|' %}
-                {% for frequentItem in frequent %}
-                    <div class="frequently-bought-product">
-                        <div class="frequent__image">
-                            <img src="{{ all_products[frequentItem].featured_image | image_url }}" alt="{{ all_products[frequentItem].image.alt | escape }}">
-                        </div>
-                        <div class="frequent__content">
-                            <h5 class="frequent__title">{{ all_products[frequentItem].title }}</h5>
-                            <a id="AddToCart" class="frequent__btn" href="{{ all_products[frequentItem].url }}">Add to Cart</a>
-                        </div>
+                {% endif %}
+            </div>
+        </div>
+        <div class="swiper-pagination"></div>
+    </div>
+    <div class="product__description">
+        <h1 class="product__title">{{ product.title | upcase }}</h1>
+        <p id="product-cost" class="product__cost">{{ current_variant.price | money }}</p>
+        <div class="product__reviews">
+            <img src="{{ product.metafields.accentuate.review[0].src }}" alt="star-icon">
+            <img src="{{ product.metafields.accentuate.review[0].src }}" alt="star-icon">
+            <img src="{{ product.metafields.accentuate.review[0].src }}" alt="star-icon">
+            <img src="{{ product.metafields.accentuate.review[0].src }}" alt="star-icon">
+            <img src="{{ product.metafields.accentuate.review[0].src }}" alt="star-icon">
+            <p class="review__text">{{ section.settings.review }}</p>
+        </div>
+        <div class="affirm-text">
+            <img src= "{{ "affirm.png" | asset_url }}" alt="affirm-icon">
+            <p>{{ section.settings.affirm_text }} {{ section.settings.affirm_label  }}</p>
+        </div>
+        <div class="product__info">{{ product.description }}</div>
+        <form class="add-to-cart" action="/cart/add" method="post" enctype="multipart/form-data" id="AddToCartForm">
+            <div class="product__options">
+                {% for variant in product.variants %}
+                    <div class="product__option">
+                        {% if variant.available %}
+                            <input class="variant-radio" type="radio" name="id" data-variant-price="{{ variant.price | money }}" id="variant-{{ forloop.index }}" {% if forloop.index == 1 %} checked {% endif %} value="{{ variant.id }}">
+                            <label for="variant-{{ forloop.index }}">{{ variant.title }} {{ product.title }}</label>
+                        {% else %}
+                            <label class="sold-out" for="variant-{{ forloop.index }}">{{ variant.title }} {{ product.title }}</label>
+                        {% endif %}
                     </div>
                 {% endfor %}
             </div>
+            <input style="display: none;" type="number" id="Quantity" name="quantity" value="1" min="1">
+            <p class="free-shipping"><em>{{ section.settings.bonus }}</em></p>
+            <button class="product__btn" type="submit" name="add" id="AddToCart">Add to cart</button>
+        </form>
+        <div class="frequenly-bought-products">
+            <h2 class="frequently-bought__title">{{ section.settings.suggestions }}</h2>
+            {% assign frequent = product.metafields.accentuate.frequently_bought | split: '|' %}
+            {% for frequentItem in frequent %}
+                <div class="frequently-bought-product">
+                    <div class="frequent__image">
+                        <img src="{{ all_products[frequentItem].featured_image | image_url }}" alt="{{ all_products[frequentItem].image.alt | escape }}">
+                    </div>
+                    <div class="frequent__content">
+                        <h5 class="frequent__title">{{ all_products[frequentItem].title }}</h5>
+                        <a id="AddToCart" class="frequent__btn" href="{{ all_products[frequentItem].url }}">{{ section.settings.btn_label }}</a>
+                    </div>
+                </div>
+            {% endfor %}
         </div>
     </div>
-</section>
+</div>
 
 {{ 'https://unpkg.com/swiper@8/swiper-bundle.min.js' | script_tag }}
 {{ 'slider.js' | asset_url | script_tag }}

@@ -1,7 +1,7 @@
 {{ 'ymal.css' | asset_url | stylesheet_tag }}
 
 <div class="container">
-    <h2 class="ymal__title">{{ section.settings.ymal-title | upcase }}</h2>
+    <h2 class="ymal__title">{{ section.settings.ymal_title | upcase }}</h2>
     <div class="ymal__items">
         {% for block in section.blocks limit: 4 %}
             {% render "product-card", productItem: block.settings.product %}
@@ -17,9 +17,9 @@
     "settings": [
         {
             "type": "text",
-            "id": "ymal-title",
+            "id": "ymal_title",
             "label": "Suggestion",
-            "default": "You Might Also Like",
+            "default": "You Might Also Like"
         }
     ],
     "blocks": [

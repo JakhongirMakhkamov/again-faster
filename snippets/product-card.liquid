@@ -32,11 +32,15 @@
         {% endif %}
     </p>
     <div class="product-tags">
-        {% for tag in productItem.tags %}
-            <span class="product-tag tag--{{ tag | handleize}}">
-                {{ tag }}
-            </span>
-        {% endfor %}
+        {% if productItem.compare_at_price_max > productItem.price %}
+            <span class="product-tag tag--sale">SALE</span>
+        {% else %}
+            {% for tag in productItem.tags %}      
+                <span class="product-tag tag--{{ tag | handleize}}">
+                    {{ tag }}
+                </span>
+            {% endfor %}
+        {% endif %}
     </div>
     {% unless productItem.available %}
         <p class="product-sold-out-text">Sold Out - Get notified when back in stock</p>

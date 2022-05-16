@@ -94,9 +94,28 @@
 }
 
 .product__options {
+  max-height: 18.8rem;
+  overflow-y: scroll;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 0.8rem;
+  padding-right: 1.6rem;
+}
+
+.product__options::-webkit-scrollbar {
+  width: 0.4rem;
+}
+
+.product__options::-webkit-scrollbar-track {
+  background-color: #f1f1f1;
+  background-clip: padding-box;
+  border-radius: 9.2rem;
+}
+
+.product__options::-webkit-scrollbar-thumb {
+  background-color: #353535;
+  background-clip: padding-box;
+  border-radius: 9.2rem;
 }
 
 .product__option input[type="radio"] {
