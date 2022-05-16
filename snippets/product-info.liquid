@@ -1,0 +1,18 @@
+{{ 'product-info.css' | asset_url | stylesheet_tag }}
+{{ 'customSection.js' | asset_url | script_tag }}
+
+<section class="product-info">
+    <div class="container container--info">
+        <span class="vertical-rule first-line"></span>
+        <span class="vertical-rule second-line"></span>
+        <span class="vertical-rule third-line"></span>
+        {% for html in product.metafields.accentuate.product_info %}
+            <div class="info info--{{ forloop.index }}">
+                <div class="info__content info__content--{{ forloop.index }}">
+                    {{ product.metafields.accentuate[html.metafield][html.index] }}
+                </div>
+                <img class="info__img info__img--{{ forloop.index }}" src="{{ product.metafields.accentuate.info_image[forloop.index0][0].src }}" alt="{{ product.metafields.accentuate.info_image[forloop.index0][0].handle }}">
+            </div>
+        {% endfor %}
+    </div>
+</section>

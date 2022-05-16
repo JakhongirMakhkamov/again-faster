@@ -7,31 +7,35 @@
 }
 
 .product__gallery {
+  position: relative;
   max-width: 72rem;
+  height: fit-content;
+  /* max-height: calc(100vh - 4rem); */
 }
 
-.product__gallery.swiper {
+.product__gallery .swiper {
   margin: 0;
 }
 
-.product__description .swiper-pagination {
+.product__gallery .swiper-pagination {
   display: flex;
   width: fit-content !important;
   height: fit-content;
   flex-direction: column;
   gap: 0.8rem;
   top: 50%;
-  left: -29% !important;
+  left: auto !important;
+  right: -5%;
   bottom: auto !important;
   transform: translateY(-50%);
 }
 
-.product__description .swiper-pagination-bullet {
+.product__gallery .swiper-pagination-bullet {
   background: #f1f1f1;
   opacity: 1;
 }
 
-.product__description .swiper-pagination-bullet-active {
+.product__gallery .swiper-pagination-bullet-active {
   background: #353535;
 }
 
@@ -44,7 +48,7 @@
   max-width: 44.2rem;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  padding: 4rem 0;
 }
 
 .product__title {
@@ -85,6 +89,8 @@
 
 .add-to-cart {
   width: 100%;
+  padding-bottom: 2.4rem;
+  border-bottom: 1px solid #f1f1f1;
 }
 
 .product__options {
@@ -117,13 +123,70 @@
   border-color: #000;
 }
 
+.free-shipping {
+  color: #979797;
+  line-height: 2.345rem;
+  margin: 1.6rem 0 0;
+}
+
 .product__btn {
   width: 100%;
   font-family: "Open Sans", sans-serif;
+  font-size: 1.2rem;
+  line-height: 1.634rem;
+  letter-spacing: 0.175em;
   text-transform: uppercase;
   color: #fff;
   background: #000;
-  border: 0;
-  margin: 2.4rem 0;
-  padding: 1.4rem 0;
+  cursor: pointer;
+  margin: 2.4rem 0 0;
+  padding: 1.2rem 4rem;
+  border: 1px solid #000;
+  transition: color 0.2s linear, background 0.2s linear;
+}
+
+.product__btn:hover {
+  color: #000;
+  background: #fff;
+}
+
+.frequenly-bought-products {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+  padding: 1.6rem 0;
+}
+
+.frequently-bought__title {
+  flex: 0 1 100%;
+  font-size: 1.6rem;
+  font-weight: 600;
+  line-height: 2.68rem;
+  margin-bottom: 0.5rem;
+}
+
+.frequently-bought-product {
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+}
+
+.frequent__image {
+  max-width: 9.8rem;
+}
+
+.frequent__image img {
+  width: 100%;
+}
+
+.frequent__title {
+  font-size: 1.4rem;
+  line-height: 2.345rem;
+}
+
+.frequent__btn {
+  font-weight: 300;
+  line-height: 2.345rem;
+  color: inherit;
 }

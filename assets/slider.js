@@ -8,7 +8,7 @@ const swiper = new Swiper(".featured-swiper", {
   },
 });
 
-const pdp_swiper = new Swiper(".product__gallery", {
+const pdp_swiper = new Swiper(".gallery-swiper", {
   rewind: true,
   slidesPerView: 1,
   pagination: {

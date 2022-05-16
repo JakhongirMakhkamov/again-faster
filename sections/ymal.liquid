@@ -1,0 +1,46 @@
+{{ 'ymal.css' | asset_url | stylesheet_tag }}
+
+<div class="container">
+    <h2 class="ymal__title">{{ section.settings.ymal-title | upcase }}</h2>
+    <div class="ymal__items">
+        {% for block in section.blocks limit: 4 %}
+            {% render "product-card", productItem: block.settings.product %}
+        {% endfor %}
+    </div>
+</div>
+
+{% schema %}
+{
+    "name": "You Might Also Like",
+    "class": "ymal",
+    "tag": "section",
+    "settings": [
+        {
+            "type": "text",
+            "id": "ymal-title",
+            "label": "Suggestion",
+            "default": "You Might Also Like",
+        }
+    ],
+    "blocks": [
+        {
+            "type": "product",
+            "name": "Products",
+            "limit": 4,
+            "settings": [
+                {
+                    "type": "product",
+                    "id": "product",
+                    "label": "Product Name"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "category": "Product",
+            "name": "You Might Also Like"
+        }
+    ]
+}
+{% endschema %}

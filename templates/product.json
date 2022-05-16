@@ -2,7 +2,10 @@
   "sections": {
     "product": {
       "type": "product"
+    },
+    "ymal": {
+      "type": "ymal"
     }
   },
-  "order": ["product"]
+  "order": ["product", "ymal"]
 }

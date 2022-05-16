@@ -1,5 +1,5 @@
 .intro {
-  height: 100vh;
+  height: calc(100vh - 4rem);
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;

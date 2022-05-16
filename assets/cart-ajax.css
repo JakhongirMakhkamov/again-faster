@@ -1,0 +1,115 @@
+.cart-ajax {
+  max-width: 35rem;
+  max-height: 100vh;
+  position: fixed;
+  overflow-y: scroll;
+  top: 0;
+  right: 0;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+  background: #fff;
+  box-shadow: -0.2rem 0 0.4rem hsl(0 4% 15% / 10%);
+  padding: 2.4rem 1.6rem;
+  transform: translateY(-100vh);
+  transition: transform 0.5s linear;
+}
+
+.cart-ajax.active {
+  transform: translateY(0);
+}
+
+.ajax__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #f1f1f1;
+  padding-bottom: 1.6rem;
+}
+
+.ajax__close-btn {
+  height: 2.4rem;
+  font-family: inherit;
+  text-transform: uppercase;
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+
+.ajax__item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.6rem;
+}
+
+.ajax__product-img {
+  max-width: 9.8rem;
+}
+
+.ajax__img {
+  width: 100%;
+}
+
+.ajax__product__title {
+  font-size: 1.6rem;
+  font-weight: 600;
+  line-height: 2.68rem;
+  color: inherit;
+  text-decoration: none;
+  margin-bottom: 0.5rem;
+}
+
+.ajax__actions {
+  display: flex;
+  flex-direction: column;
+}
+
+.ajax__btn {
+  width: 100%;
+  font-family: Open Sans, sans-serif;
+  font-size: 1.2rem;
+  line-height: 1.634rem;
+  letter-spacing: 0.175em;
+  text-transform: uppercase;
+  text-decoration: none;
+  text-align: center;
+  color: #fff;
+  background: #000;
+  cursor: pointer;
+  margin: 2rem 0;
+  padding: 1.2rem 4rem;
+  border: 1px solid #000;
+  transition: color 0.2s linear, background 0.2s linear;
+}
+
+.ajax__btn:hover {
+  color: #000;
+  background: #fff;
+}
+
+.ajax__close-btn--text {
+  width: fit-content;
+  height: auto;
+  position: relative;
+  font-size: 1.2rem;
+  margin: 0 auto;
+  padding: 0 0 0.4rem;
+}
+
+.ajax__close-btn--text::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  max-width: 100%;
+  width: 100%;
+  height: 0.1rem;
+  background-color: #000;
+  transition: max-width 0.2s ease-in-out;
+}
+
+.ajax__close-btn--text:hover::after {
+  max-width: 0;
+}

@@ -1,0 +1,26 @@
+{{ 'cart-ajax.css' | asset_url | stylesheet_tag }}
+
+<div id="cart-ajax" class="cart-ajax">
+    <div class="ajax__header">
+        <p class="ajax__header-title">JUST ADDED TO YOUR CART</p>
+        <button class="ajax__close-btn">{% render "icon-close-cart" %}</button>
+    </div>
+    {% for item in cart.items limit: 1 %}
+        <div class="ajax__item">
+            <div class="ajax__product-img">
+                <a href="{{ item.url }}">
+                    <img class="ajax__img" src=" {{ item | image_url }} " alt="{{ item.title | escape }}">
+                </a>
+            </div>
+            <div class="ajax__content">
+                <a class="ajax__product__title" href="{{ item.url }}">{{ item.product.title }} &ndash; {{ item.variant.title }}</a>
+                <p class="ajax__product__price">{{ item.line_price | money }}</p>
+            </div>
+            <span class="ajax__product__quantity">QTY: {{ item.quantity }}</span>
+        </div>
+    {% endfor %}
+    <div class="ajax__actions">
+        <a href="/cart" class="ajax__btn">View Cart</a>
+        <button class="ajax__close-btn ajax__close-btn--text">Continue Shopping</button>
+    </div>
+</div>

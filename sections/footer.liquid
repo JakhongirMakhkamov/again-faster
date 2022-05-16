@@ -2,12 +2,14 @@
 
 <div class="container container--footer">
     <span class="footer__logo">{% render "icon-short-logo" %}</span>
-    {% form 'contact' %}
+    {% form 'customer' %}
         <div class="email">
             <label for="email">{{ section.settings.form_title | upcase }}</label>
             <div class="form__input">
-                <input type="email" name="contact[email]" id="email" placeholder="Enter your email" />
-                <span class="form__arrow"><a href="">{% render "icon-arrow" %}</a></span>
+                <input type="email" name="contact[email]" id="email" value="{{ form.email }}" placeholder="Enter your email" />
+                <button style="border: 0; background: none;" type="submit">
+                    <span class="form__arrow"><a href="">{% render "icon-arrow" %}</a></span>
+                <button>
             </div>
         </div>
         <div class="footer__socials">
