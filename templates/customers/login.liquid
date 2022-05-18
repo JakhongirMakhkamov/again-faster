@@ -1,28 +1,58 @@
 <!-- /templates/customers/login.liquid -->
+{{ 'customers-login.css' | asset_url | stylesheet_tag }}
 
-<h2>Login</h2>
-{% form 'customer_login' %}
+<section class="login">
+    <div class="container">
+        <div id="login__customer" class="login__customer">
+            <h2 class="login__title">Log in</h2>
+            {% form 'customer_login', class: "login__form" %}
+                {{ form.errors | default_errors }}
 
-{{ form.errors | default_errors }}
+                <div class="login__form__item">
+                    <input class="login__input" type="email" name="customer[email]" required placeholder=" " />
+                    <label class="login__email login__label" for="customer_email">
+                        <span class="login__label__content">Email</span>
+                    </label>
+                </div>
 
-<label for="customer_email">Email Address</label>
-<input type="email" name="customer[email]" />
+                <div class="login__form__item">
+                    <input class="login__input" type="password" name="customer[password]" required placeholder=" " />
+                    <label class="login__password login__label" for="customer_password">
+                        <span class="login__label__content">Password</span>
+                    </label>
+                </div>
+                
+                <span id="passReset" class="passReset">Forgot password?</span>
 
-<label for="customer_password">Password</label>
-<input type="password" name="customer[password]" />
+                <div class="form__actions">
+                    <input class="login__form__btn" type="submit" value="Sign In" />
+                    <p>Don't have an account yet?</p>
+                    <a class="login__create-btn" href="/account/register">Create an account</a>
+                </div>
+            {% endform %}
+        </div>
 
-<input type="submit" value="Sign In" />
+        <div id="reset__password" class="reset__password hidden">
+            <div class="reset__header">
+                <h2 class="login__title">Forgot Password</h2>
+                <p>Enter your email below to receive an email to reset your password.</p>
+            </div>
 
-{% endform %}
+            {% form 'recover_customer_password', class: "login__form"  %}
+                {{ form.errors | default_errors }}
 
-<h2>Forgot Password</h2>
-{% form 'recover_customer_password' %}
+                <div class="login__form__item">
+                    <input class="login__input" type="email" name="email" required placeholder=" " />
+                    <label class="login__email login__label" for="customer_email">
+                       <span class="login__label__content">Email Address</span>
+                    </label>
+                </div>
 
-{{ form.errors | default_errors }}
+                <input class="login__form__btn" type="submit" value="Submit" />
+                <div>or <span id="cancel-reset" class="cancel-reset">Cancel</span></div>
+            {% endform %}
+        </div>
+    </div>
+</section>
 
-<label for="customer_email">Email Address</label>
-<input type="email" name="email" />
-
-<input type="submit" value="Submit" />
-
-{% endform %}
+{{ 'script-reset-password.js' | asset_url | script_tag }}

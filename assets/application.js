@@ -27,14 +27,14 @@ $(document).ready(function () {
     });
   };
 
-  const onCartUpdate = function () {
-    ajaxCart.addClass("active");
-  };
+  // const onCartUpdate = function () {
+  //   ajaxCart.addClass("active");
+  // };
 
-  const onError = function (XMLHttpRequest, textStatus) {
-    let data = XMLHttpRequest.responseJSON;
-    alert(data.status + " - " + data.message + ": " + data.description);
-  };
+  // const onError = function (XMLHttpRequest, textStatus) {
+  //   let data = XMLHttpRequest.responseJSON;
+  //   alert(data.status + " - " + data.message + ": " + data.description);
+  // };
 
   const onAjaxCartClose = function () {
     ajaxCart.removeClass("active");
