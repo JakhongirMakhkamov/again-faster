@@ -1,0 +1,23 @@
+<div class="ajax__item">
+    <div class="ajax__product-img">
+        <img class="ajax__img" src="{{ cartItem | image_url }}" alt="{{ cartItem.title | escape }}">
+    </div>
+    <div class="ajax__content">
+        <h5 class="ajax__product__title">{{ cartItem.product.title }}</h5>
+        <p class="ajax__variant__title">{{ cartItem.variant.title }}</p>
+        {% assign quantityId = "updates_" | append: cartItem.key %}
+        {% render "cart-quantity-picker", name: "updates[]", id: quantityId, value: cartItem.quantity, min: 0, max: cartItem.variant.inventory_quantity, field_class: "js-line-quantity" %}
+    </div>
+    <div class="ajax__controller">
+        <p class="ajax__line-price">
+            {% if cartItem.original_line_price != cartItem.line_price %}
+                {{ cartItem.original_line_price | money }}
+            {% endif %}
+            {{ cartItem.line_price | money }}
+        </p>
+        {% for discount in cartItem.discounts %}{{ discount.title }}{% endfor %}
+        <a class="js-remove-line" href="/cart/change?line={{ forIndex }}&amp;quantity=0">
+            {% render "icon-remove-item-line" %}
+        </a>
+    </div>
+</div>

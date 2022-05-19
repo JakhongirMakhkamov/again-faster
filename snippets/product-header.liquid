@@ -53,7 +53,7 @@
             </div>
             <input style="display: none;" type="number" id="Quantity" name="quantity" value="1" min="1">
             <p class="free-shipping"><em>{{ section.settings.bonus }}</em></p>
-            <button class="product__btn" type="submit" name="add" id="AddToCart">Add to cart</button>
+            <button class="product__btn" type="submit" name="add" id="AddToCart" {% if current_variant.available != true %}disabled{% endif %}>Add to cart</button>
         </form>
         <div class="frequenly-bought-products">
             <h2 class="frequently-bought__title">{{ section.settings.suggestions }}</h2>

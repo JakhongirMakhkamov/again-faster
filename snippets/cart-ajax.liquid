@@ -1,29 +1,7 @@
 {{ 'cart-ajax.css' | asset_url | stylesheet_tag }}
 
-<div id="cart-ajax" class="cart-ajax js-mini-cart-contents">
-    <div class="ajax__content">
-        <div class="ajax__header">
-            <p class="ajax__header-title">Cart</p>
-            <button class="ajax__close-btn">{% render "icon-close-cart" %}</button>
-        </div>
-        <div class="ajax__items">
-            {% for item in cart.items %}
-                <div class="ajax__item">
-                    <div class="ajax__product-img">
-                        <a href="{{ item.url }}">
-                            <img class="ajax__img" src=" {{ item | image_url }} " alt="{{ item.title | escape }}">
-                        </a>
-                    </div>
-                    <div class="ajax__content">
-                        <a class="ajax__product__title" href="{{ item.url }}">{{ item.product.title }} &ndash; {{ item.variant.title }}</a>
-                        <p class="ajax__product__price">{{ item.line_price | money }}</p>
-                    </div>
-                    <span class="ajax__product__quantity">QTY: {{ item.quantity }}</span>
-                </div>
-            {% endfor %}
-        </div>
+<section id="mini-cart" class="cart-ajax">
+    <div class="js-mini-cart-contents">
+        {% render "cart-contents" %}
     </div>
-    <div class="ajax__actions">
-        <button type="submit" name="checkout" class="ajax__btn">Continue To Checkout</button>
-    </div>
-</div>
+</section>

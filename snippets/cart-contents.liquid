@@ -1,0 +1,37 @@
+{% if cart.item_count > 0 %}
+  <div class="ajax__header">
+    <h1 class="ajax__header-title">Cart</h1>
+    <button class="ajax__close-btn">{% render "icon-close-cart" %}</button>
+  </div>
+  <form class="cart__form" action="/cart" method="post" novalidate>
+    <fieldset id="cart-fieldset" class="js-cart-fieldset">
+      <div class="ajax__items">
+        {% for item in cart.items %}
+          {% render "cart-line-item", cartItem: item, forIndex: forloop.index %}
+        {% endfor %}
+      </div>
+      <div class="ajax__actions">
+        <div class="ajax__subtotal">
+          <p class="subtotal__title">Subtotal</p>
+          <p class="subtotal__price">{{ cart.total_price | money }}</p>
+        </div>
+        <p class="tax__info">Tax and shipping calculates at checkout.</p>
+        <div class="affirm__info">
+          <img src="{{ "affirm.png" | asset_url }}" alt="affirm logo">
+          <p>pay as low as 56/mo</p>
+          <a href="">Learn More</a>
+        </div>
+        <button class="ajax__btn" type="submit" name="checkout">Continue To Checkout</button>
+      </div>
+  </fieldset>
+  </form>
+{% else %}
+  <div class="ajax__header">
+    <h1 class="ajax__header-title">Cart</h1>
+    <button class="ajax__close-btn">{% render "icon-close-cart" %}</button>
+  </div>
+  <div class="cart__content--empty">
+    <h5 class="empty-cart__title">Your Cart is Empty</h5>
+    <a href="" class="empty-cart__btn">Shop Best Sellers</a>
+  </div>
+{% endif %}

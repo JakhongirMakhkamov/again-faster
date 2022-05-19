@@ -169,6 +169,17 @@
   background: #fff;
 }
 
+.product__btn:disabled {
+  cursor: not-allowed;
+  border-color: #c4c4c4;
+  background: #c4c4c4;
+}
+
+.product__btn:disabled:hover {
+  color: #fff;
+  background: #c4c4c4;
+}
+
 .frequenly-bought-products {
   display: flex;
   align-items: center;

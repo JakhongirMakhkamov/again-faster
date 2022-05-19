@@ -2,7 +2,7 @@
 
 <div class="container container--footer">
     <span class="footer__logo">{% render "icon-short-logo" %}</span>
-    {% form 'customer' %}
+    {% form 'customer', class: "footer__form" %}
         <div class="email">
             <label for="email">{{ section.settings.form_title | upcase }}</label>
             <div class="form__input">

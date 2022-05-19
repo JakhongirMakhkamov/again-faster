@@ -2,7 +2,6 @@
   width: 48rem;
   height: 100vh;
   position: fixed;
-  overflow-y: scroll;
   top: 0;
   right: 0;
   z-index: 10;
@@ -12,21 +11,24 @@
   gap: 1.6rem;
   background: #fff;
   box-shadow: -0.2rem 0 0.4rem hsl(0 4% 15% / 10%);
-  padding: 2.4rem 1.6rem;
-  transform: translateY(-100vh);
+  padding: 2.4rem 0 4rem;
+  transform: translateX(100vh);
   transition: transform 0.5s linear;
 }
 
 .cart-ajax.active {
-  transform: translateY(0);
+  transform: translateX(0);
+}
+
+.js-mini-cart-contents {
+  height: 100%;
 }
 
 .ajax__header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid #f1f1f1;
-  padding-bottom: 2.5rem;
+  padding: 0 1.6rem 2.5rem;
 }
 
 .ajax__header-title {
@@ -44,35 +46,142 @@
   cursor: pointer;
 }
 
-.ajax__item {
+.cart__form {
+  height: calc(100% - 5.7rem);
+}
+
+.js-cart-fieldset {
+  height: 100%;
+  border: 0;
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
-  align-items: center;
+}
+
+.ajax__items {
+  overflow-y: scroll;
+  padding: 0 1.6rem;
+}
+
+.ajax__items::-webkit-scrollbar {
+  width: 0.4rem;
+}
+
+.ajax__items::-webkit-scrollbar-track {
+  background-clip: padding-box;
+  border-radius: 9.2rem;
+}
+
+.ajax__items::-webkit-scrollbar-thumb {
+  background-color: #353535;
+  background-clip: padding-box;
+  border-radius: 9.2rem;
+}
+
+.ajax__item {
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr;
   gap: 1.6rem;
   border-bottom: 1px solid #f1f1f1;
   padding: 1.6rem 0;
 }
 
+.ajax__item:first-of-type {
+  border-top: 1px solid #f1f1f1;
+}
+
 .ajax__product-img {
-  max-width: 9.8rem;
+  width: 12rem;
+  max-height: 15rem;
 }
 
 .ajax__img {
   width: 100%;
 }
 
+.ajax__content {
+  display: flex;
+  flex-direction: column;
+  padding-top: 3.7rem;
+}
+
 .ajax__product__title {
-  font-size: 1.6rem;
-  font-weight: 600;
-  line-height: 2.68rem;
-  color: inherit;
-  text-decoration: none;
-  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+  font-weight: 300;
+  text-transform: uppercase;
+  line-height: 2.016rem;
+  letter-spacing: 0.16em;
+  margin-bottom: 0.8rem;
+}
+
+.ajax__quantity-picker {
+  margin-top: auto;
+}
+
+.option-fieldset {
+  font-size: 1.2rem;
+  line-height: 2.01rem;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.ajax__variant__title,
+.quantity-text,
+.ajax__line-price {
+  font-size: 1.2rem;
+  line-height: 2.01rem;
+}
+
+.quantity-button {
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+
+.ajax__controller {
+  justify-self: end;
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  padding-top: 3.7rem;
+}
+
+.ajax__line-price {
+  margin-bottom: 1.8rem;
 }
 
 .ajax__actions {
   display: flex;
   flex-direction: column;
+  padding: 1.6rem 1.6rem 0;
+}
+
+.cart__content--empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 80%;
+}
+
+.empty-cart__title {
+  font-size: 1.6rem;
+  line-height: 2.68rem;
+  font-weight: 400;
+}
+
+.empty-cart__btn {
+  font-size: 1.2rem;
+  line-height: 1.634rem;
+  letter-spacing: 0.175em;
+  color: inherit;
+  text-decoration: none;
+  text-align: center;
+  text-transform: uppercase;
+  width: 100%;
+  background: #fff;
+  border: 1px solid #000;
+  padding: 1.4rem 4rem;
 }
 
 .ajax__btn {
@@ -87,7 +196,6 @@
   color: #fff;
   background: #000;
   cursor: pointer;
-  margin: 2rem 0;
   padding: 1.2rem 4rem;
   border: 1px solid #000;
   transition: color 0.2s linear, background 0.2s linear;
@@ -121,4 +229,30 @@
 
 .ajax__close-btn--text:hover::after {
   max-width: 0;
+}
+
+.visually-hidden {
+  display: none;
+}
+
+.ajax__subtotal {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.6rem;
+  line-height: 2.688rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 1.1rem;
+}
+
+.affirm__info {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin: 1.6rem 0 2.4rem;
+}
+
+.affirm__info a {
+  color: inherit;
 }
