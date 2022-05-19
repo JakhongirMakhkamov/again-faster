@@ -13,7 +13,7 @@
   box-shadow: -0.2rem 0 0.4rem hsl(0 4% 15% / 10%);
   padding: 2.4rem 0 4rem;
   transform: translateX(100vh);
-  transition: transform 0.5s linear;
+  transition: transform 0.3s linear;
 }
 
 .cart-ajax.active {

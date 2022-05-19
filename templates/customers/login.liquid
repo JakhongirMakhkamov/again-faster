@@ -1,54 +1,54 @@
 <!-- /templates/customers/login.liquid -->
-{{ 'customers-login.css' | asset_url | stylesheet_tag }}
+{{ 'customers-template.css' | asset_url | stylesheet_tag }}
 
-<section class="login">
+<section class="customer-template">
     <div class="container">
         <div id="login__customer" class="login__customer">
-            <h2 class="login__title">Log in</h2>
-            {% form 'customer_login', class: "login__form" %}
+            <h2 class="customer-template__title">Log in</h2>
+            {% form 'customer_login', class: "customer-template__form" %}
                 {{ form.errors | default_errors }}
 
-                <div class="login__form__item">
-                    <input class="login__input" type="email" name="customer[email]" required placeholder=" " />
-                    <label class="login__email login__label" for="customer_email">
-                        <span class="login__label__content">Email</span>
+                <div class="customer-template__form__item">
+                    <input class="customer-template__input" type="email" name="customer[email]" required placeholder=" " />
+                    <label class="customer-template__label" for="customer_email">
+                        <span class="customer-template__label__content">Email</span>
                     </label>
                 </div>
 
-                <div class="login__form__item">
-                    <input class="login__input" type="password" name="customer[password]" required placeholder=" " />
-                    <label class="login__password login__label" for="customer_password">
-                        <span class="login__label__content">Password</span>
+                <div class="customer-template__form__item">
+                    <input class="customer-template__input" type="password" name="customer[password]" required placeholder=" " />
+                    <label class="customer-template__label" for="customer_password">
+                        <span class="customer-template__label__content">Password</span>
                     </label>
                 </div>
                 
                 <span id="passReset" class="passReset">Forgot password?</span>
 
                 <div class="form__actions">
-                    <input class="login__form__btn" type="submit" value="Sign In" />
+                    <input class="customer-template__form__btn" type="submit" value="Log In" />
                     <p>Don't have an account yet?</p>
-                    <a class="login__create-btn" href="/account/register">Create an account</a>
+                    <a class="customer-template__create-btn" href="/account/register">Create an account</a>
                 </div>
             {% endform %}
         </div>
 
         <div id="reset__password" class="reset__password hidden">
             <div class="reset__header">
-                <h2 class="login__title">Forgot Password</h2>
+                <h2 class="customer-template__title">Forgot Password</h2>
                 <p>Enter your email below to receive an email to reset your password.</p>
             </div>
 
-            {% form 'recover_customer_password', class: "login__form"  %}
+            {% form 'recover_customer_password', class: "customer-template__form"  %}
                 {{ form.errors | default_errors }}
 
-                <div class="login__form__item">
-                    <input class="login__input" type="email" name="email" required placeholder=" " />
-                    <label class="login__email login__label" for="customer_email">
-                       <span class="login__label__content">Email Address</span>
+                <div class="customer-template__form__item">
+                    <input class="customer-template__input" type="email" name="email" required placeholder=" " />
+                    <label class="customer-template__email customer-template__label" for="customer_email">
+                       <span class="customer-template__label__content">Email Address</span>
                     </label>
                 </div>
 
-                <input class="login__form__btn" type="submit" value="Submit" />
+                <input class="customer-template__form__btn" type="submit" value="Submit" />
                 <div>or <span id="cancel-reset" class="cancel-reset">Cancel</span></div>
             {% endform %}
         </div>
