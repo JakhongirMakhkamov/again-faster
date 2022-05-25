@@ -161,13 +161,14 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 80%;
+  padding: 80% 1.6rem 0;
 }
 
 .empty-cart__title {
   font-size: 1.6rem;
   line-height: 2.68rem;
   font-weight: 400;
+  margin-bottom: 2.4rem;
 }
 
 .empty-cart__btn {

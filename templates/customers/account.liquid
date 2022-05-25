@@ -1,26 +1,65 @@
 <!-- /templates/customers/account.liquid -->
+{{ 'customers-account-overview.css' | asset_url | stylesheet_tag }}
 
-{% if customer.default_address %}
-  <h2>Address</h2>
-  <p>{{ customer.default_address.address1 }}</p>
-  {% if customer.default_address.address2 != "" %}
-    <p>{{ customer.default_address.address2 }}</p>
-  {% endif %}
-  <p>{{ customer.default_address.city}}, {% if address.province_code %}{{ customer.default_address.province_code }}, {% endif %}{{ customer.default_address.country }}</p>
-  <p>{{ customer.default_address.zip }}</p>
-  <p>{{ customer.default_address.phone }}</p>
-{% endif %}
-
-<div id="customer_orders">
-  <h2>Orders</h2>
-  {% paginate customer.orders by 10 %}
-  {% if customer.orders.size != 0 %}
-    {% for order in customer.orders %}
-      <!-- order details here -->
-    {% endfor %}
-  {% else %}
-    <p>You haven't placed any orders yet.</p>
-  {% endif %}
-  {{ paginate | default_pagination }}
-  {% endpaginate %}
-</div>
+<section class="account">
+  <div class="container container--account">
+    {% render "account-sidebar" %}
+    <div class="account__content">
+      <div id="customer_orders" class="customer__orders">
+        <h2 class="account__content__title">Orders Details</h2>
+        <div class="order__items">
+          {% paginate customer.orders by 5 %}
+          {% if customer.orders.size != 0 %}
+                <div class="order__item orders__header">
+                  <p class="orders__title">Order Number</p>
+                  <p class="orders__title">Date</p>
+                  <p class="orders__title">Status</p>
+                  <p class="orders__title">Total</p>
+                </div>
+                {% for order in customer.orders %}
+                  <div class="order__item">
+                    <p class="order__data">{{ order.name | link_to: order.customer_url }}</p>
+                    <p class="order__data">{{ order.created_at | date: "%d.%m.%Y" }}</p>
+                    <p class="order__data">{{ order.fulfillment_status }}</p>
+                    <p class="order__data">{{ order.total_price | money }}</p>
+                  </div>
+                {% endfor %}
+            {% else %}
+              <p class="">You haven't placed any orders yet.</p>
+            {% endif %}
+            <div class="account__content__pagination">
+              {{ paginate | default_pagination: next: "Next", previous: "Previous" }}
+            </div>
+          {% endpaginate %}
+        </div>
+      </div>
+      
+      <div class="customer__info">
+        {% if customer.default_address %}
+          <h2 class="account__content__title">Address Book</h2>
+          <h5 class="customer__name">{{ customer.name }}</h5>
+          <div class="customer__adress">
+            {% if customer.default_address.address2 != "" %}
+              <span>{{ customer.default_address.address2 }}</span>
+            {% endif %}
+            <span>{{ customer.default_address.address1 }},</span>
+          </div>
+          <div class="customer__company">
+            <span>{{ customer.default_address.company }}</span>,
+            <span>{{ customer.default_address.city}},</span>
+          </div>
+          <div class="customer__province">
+            <span>{{ customer.default_address.province_code }}</span>
+            <span>{{ customer.default_address.zip }}</span>
+          </div>
+        {% endif %}
+        <div class="account__overview__actions">
+          <a class="account__adresses-btn" href="{{ routes.account_addresses_url }}">
+            View Addresses
+          </a>
+          <a href="{{ routes.account_logout_url }}" class="account__adresses-btn">Log Out</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

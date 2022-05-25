@@ -20,6 +20,11 @@
   margin: 0 auto;
 }
 
+.login__form {
+  display: flex;
+  flex-direction: column;
+}
+
 .customer-template__form__item {
   position: relative;
   margin-bottom: 4.3rem;
@@ -97,6 +102,12 @@
   cursor: pointer;
 }
 
+.errors ul {
+  list-style: none;
+  color: #da0000;
+  margin-bottom: 0.8rem;
+}
+
 .form__actions {
   width: 100%;
 }
@@ -147,10 +158,6 @@
 .reset__header h2,
 .reset__header p {
   margin-bottom: 4rem;
-}
-
-.reset__password .customer-template__form__item {
-  margin-bottom: 1.6rem;
 }
 
 .cancel-reset {

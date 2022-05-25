@@ -1,0 +1,133 @@
+.container--orders {
+  display: flex;
+  padding-left: 0;
+  gap: 13.1rem;
+}
+
+.orders__content {
+  width: 100%;
+  padding: 7.8rem 0 14.6rem;
+}
+
+.order__info {
+  max-width: 67.2rem;
+}
+
+.orders__title {
+  font-size: 1.6rem;
+  font-weight: 400;
+  line-height: 2.688rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 2.7rem;
+}
+
+.order__number {
+  font-size: 1.6rem;
+  font-weight: 400;
+  line-height: 2.68rem;
+  margin-bottom: 2.4rem;
+}
+
+.orders__header,
+.ordered__item {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.orders__header {
+  margin-bottom: 1.6rem;
+  padding-bottom: 3.1rem;
+  border-bottom: 1px solid #f1f1f1;
+}
+
+.order__header__item:nth-of-type(2),
+.order__quantity {
+  justify-self: center;
+  align-self: center;
+}
+
+.order__header__item:last-of-type,
+.order__total__price {
+  justify-self: end;
+  align-self: center;
+}
+
+.ordered__items {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+}
+
+.ordered__item {
+  padding-bottom: 1.6rem;
+  border-bottom: 1px solid #f1f1f1;
+}
+
+.order__img {
+  max-width: 12rem;
+}
+
+.order__img img {
+  width: 100%;
+  display: block;
+}
+
+.ordered__item__info {
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+}
+
+.order__title {
+  font-size: 1.6rem;
+  font-weight: 600;
+  line-height: 2.68rem;
+  text-transform: uppercase;
+  margin-bottom: 0.8rem;
+}
+
+.order__title a {
+  text-decoration: none;
+  color: #000;
+}
+
+.order__subtotal {
+  width: 35rem;
+  display: flex;
+  flex-direction: column;
+  margin-left: auto;
+  gap: 0.8rem;
+  margin-top: 2.4rem;
+}
+
+.order__subtotal__item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.order__subtotal__price {
+  font-size: 1.6rem;
+  line-height: 2.688rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-top: 1.6rem;
+}
+
+.order__addresses {
+  display: flex;
+  gap: 18.2rem;
+  margin-top: 8.3rem;
+}
+
+.order__address__title {
+  font-size: 1.6rem;
+  font-weight: 600;
+  line-height: 2.68rem;
+  margin-bottom: 0.8rem;
+}
+
+.order__status {
+  margin-bottom: 0.9rem;
+}

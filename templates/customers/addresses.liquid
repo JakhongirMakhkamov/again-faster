@@ -1,39 +1,238 @@
 <!-- /templates/customers/addresses.liquid -->
 
-<h2>New Address</h2>
-{% form 'customer_address', customer.new_address %}
+{{ 'customers-account-addresses.css' | asset_url | stylesheet_tag }}
+{{ 'customers-template.css' | asset_url | stylesheet_tag }}
 
-{{ form.errors | default_errors }}
+<section class="addresses">
+  <div class="container container--addresses">
+    {% render "account-sidebar" %}
+    <div class="address__details">
+      <div class="address__items">
+        {% for address in customer.addresses %}
+          <div class="address__item">
+            <!-- {{ address | format_address }} -->
+            <h2 class="address__name">
+              {% if address == customer.default_address %}
+                Default Address
+              {% else %}
+                Address {{ forloop.index }}
+              {% endif %}
+            </h2>
+            <p class="customer__name">{{ address.name }}</p>
+            <p class="customer__address">
+              {% if address.address2 != "" %}
+                <span>{{ address.address2 }}</span>
+              {% endif %}
+              <span>{{ address.address1 }}</span>
+            </p>
+            <p class="customer__company">{{ address.company }}</p>
+            <p class="customers__city">
+              <span>{{ address.city }},</span> <span>{{ address.province_code }}</span> <span>{{ address.zip }}</span>
+            </p>
+            <div class="address__item__actions">
+              <button id="editFormButton_{{ address.id }}" type="button" data-form-id="{{ address.id }}" aria-owns="editAddress_{{ address.id }}" aria-expanded="false" class="address__update__btn address-edit-toggle">Edit</button>
+              <span>|</span>
+              <form class="address-delete-form"
+                method="post"
+                action="/account/addresses/{{ address.id }}"
+              >
+                <input type="hidden" name="_method" value="delete">
+                <button class="address__update__btn" type="submit">Delete</button>
+              </form>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+      <button class="address__btn">Add New Address</button>
+    </div>
+  
+    <div class="address__form hidden">
+      <h2 class="address__form__title">Add New Address</h2>
+      {% form 'customer_address', customer.new_address %}
+      
+        {{ form.errors | default_errors }}
+        
+        <div class="customer-template__input-group">
+          <div class="customer-template__form__item">
+            <input class="customer-template__input" type="text" value="{{ form.first_name }}" name="address[first_name]" size="30" required="" placeholder=" " />
+            <label class="customer-template__label" for="first_name">
+              <span class="customer-template__label__content">First Name</span>
+            </label>
+          </div>
 
-<label for="first_name">First Name</label>
-<input type="text" value="" name="address[first_name]" size="30" />
+          <div class="customer-template__form__item">
+            <input class="customer-template__input" type="text" value="{{ form.last_name }}" name="address[last_name]" size="30" required="" placeholder=" " />
+            <label class="customer-template__label" for="last_name">
+              <span class="customer-template__label__content">Last Name</span>
+            </label>
+          </div>
+        </div>
 
-<label for="last_name">Last Name</label>
-<input type="text" value="" name="address[last_name]" size="30" />
+        <div class="customer-template__form__item">
+          <input class="customer-template__input" type="text" value="" name="address[address1]" required="" placeholder=" " />
+          <label class="customer-template__label" for="address1">
+            <span class="customer-template__label__content">Address 1</span>
+          </label>
+        </div>
 
-<label for="company">Company</label>
-<input type="text" value="" name="address[company]" />
+        <div class="customer-template__form__item">
+          <input class="customer-template__input" type="text" value="" name="address[address2]" required="" placeholder=" " />
+          <label class="customer-template__label" for="address2">
+            <span class="customer-template__label__content">Address 2</span>
+          </label>
+        </div>
 
-<label for="address1">Address 1</label>
-<input type="text" value="" name="address[address1]" />
+        <div class="customer-template__form__item">
+          <input class="customer-template__input" type="text" value="" name="address[company]" required="" placeholder=" " />
+          <label class="customer-template__label" for="company">
+            <span class="customer-template__label__content">Company</span>
+          </label>
+        </div>
 
-<label for="address2">Address 2</label>
-<input type="text" value="" name="address[address2]" />
+        <div class="customer-template__input-group">
+          <div class="customer-template__form__item">
+            <input class="customer-template__input" type="text" value="" name="address[city]" required="" placeholder=" " />
+            <label class="customer-template__label" for="city">
+              <span class="customer-template__label__content">City</span>
+            </label>
+          </div>
+  
+          <div class="customer-template__form__item">
+            <input class="customer-template__input" type="text" value="" name="address[province]" required="" placeholder=" " />
+            <label class="customer-template__label" for="province">
+              <span class="customer-template__label__content">State</span>
+            </label>
+          </div>
+        </div>
 
-<label for="city">City</label>
-<input type="text" value="" name="address[city]" />
+        <div class="customer-template__form__item">
+          <input class="customer-template__input" type="text" value="" name="address[country]" required="" placeholder=" " />
+          <label class="customer-template__label" for="country">
+            <span class="customer-template__label__content">Country</span>
+          </label>
+        </div>
+        
+        <!-- See docs for @shopify/theme-addresses to support Country and Province -->
+      
+        <div class="address__actions">
+          <input class="address__btn" type="submit" value="Add New Address">
+          <button id="cancel__new-address" type="button" class="cancel__form hidden">Cancel</button>
+        </div>
+      {% endform %}
+    </div>
 
-<!-- See docs for @shopify/theme-addresses to support Country and Province -->
-<label for="country">Country</label>
-<select name="address[country]" /></select>
+    <div id="edit-address-form" class="edit-address__form hidden">
+      {% for address in customer.addresses %}
+        <div id="editAddress_{{ address.id }}" class="edit__address__item hidden">
+          {% form 'customer_address', address %}
+          
+            {{ form.errors | default_errors }}
+            
+            <div class="customer-template__input-group">
+              <div class="customer-template__form__item">
+                <input id="addressFirstName_{{ form.id }}" class="customer-template__input" type="text" value="{{ form.first_name }}" name="address[first_name]" size="30" required="" placeholder=" " autocomplete="given-name" />
+                <label class="customer-template__label" for="addressFirstName_{{ form.id }}">
+                  <span class="customer-template__label__content">First Name</span>
+                </label>
+              </div>
 
-<label for="province">Province</label>
-<select name="address[province]" /></select>
+              <div class="customer-template__form__item">
+                <input id="addressLastName_{{ form.id }}" class="customer-template__input" type="text" value="{{ form.last_name }}" name="address[last_name]" size="30" required="" placeholder=" " autocomplete="family-name" />
+                <label class="customer-template__label" for="addressLastName_{{ form.id }}">
+                  <span class="customer-template__label__content">Last Name</span>
+                </label>
+              </div>
+            </div>
 
-<label for="zip">Zip/Post Code</label>
-<input type="text" value="" name="address[zip]" />
+            <div class="customer-template__form__item">
+              <input id="addressAddress1_{{ form.id }}" class="customer-template__input" type="text" value="{{ form.address1 }}" autocomplete="street-address address-line1" name="address[address1]" required="" placeholder=" " />
+              <label class="customer-template__label" for="addressAddress1_{{ form.id }}">
+                <span class="customer-template__label__content">Address 1</span>
+              </label>
+            </div>
 
-<label for="phone">Phone Number</label>
-<input type="tel" value="" name="address[phone]" />
+            <div class="customer-template__form__item">
+              <input id="addressAddress2_{{ form.id }}" class="customer-template__input" type="text" value="{{ form.address2 }}" autocomplete="street-address address-line2" name="address[address2]" required="" placeholder=" " />
+              <label class="customer-template__label" for="addressAddress2_{{ form.id }}">
+                <span class="customer-template__label__content">Address 2</span>
+              </label>
+            </div>
 
-{% endform %}
+            <div class="customer-template__form__item">
+              <input id="addressCompany_{{ form.id }}" class="customer-template__input" type="text" value="{{ form.company }}" name="address[company]" required="" placeholder=" " autocomplete="organization" />
+              <label class="customer-template__label" for="addressCompany_{{ form.id }}">
+                <span class="customer-template__label__content">Company</span>
+              </label>
+            </div>
+
+            <div class="customer-template__input-group">
+              <div class="customer-template__form__item">
+                <input id="addressCity_{{ form.id }}" class="customer-template__input" type="text" value="{{ form.city }}" autocomplete="address-level2" name="address[city]" required="" placeholder=" " />
+                <label class="customer-template__label" for="addressCity_{{ form.id }}">
+                  <span class="customer-template__label__content">City</span>
+                </label>
+              </div>
+
+              <div class="customer-template__form__item">
+                <input id="addressProvince_{{ form.id }}" class="customer-template__input" type="text" value="{{ form.province }}" autocomplete="address-level1" name="address[province]" required="" placeholder=" " />
+                <label class="customer-template__label" for="addressProvince_{{ form.id }}">
+                  <span class="customer-template__label__content">State</span>
+                </label>
+              </div>
+            </div>
+
+            <div class="customer-template__form__item">
+              <input id="addressCountry_{{ form.id }}" class="customer-template__input" type="text" value="{{ form.country }}" autocomplete="country" name="address[country]" required="" placeholder=" " />
+              <label class="customer-template__label" for="addressCountry_{{ form.id }}">
+                <span class="customer-template__label__content">Country</span>
+              </label>
+            </div>
+            
+            <!-- See docs for @shopify/theme-addresses to support Country and Province -->
+          
+            <div class="address__actions">
+              <input class="address__btn" type="submit" value="Update The Address">
+              <button type="button" class="cancel__form address-edit-toggle" data-form-id="{{ form.id }}">Cancel</button>
+            </div>
+          {% endform %}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<script>
+  const addressContainer = document.querySelector(".address__details");
+  const addressForm = document.querySelector(".address__form");
+  const addressBtn = document.querySelector(".address__btn");
+  const cancelNewAddress = document.getElementById("cancel__new-address");
+
+  const toggleHiddenClass = function () {
+    addressContainer.classList.toggle("hidden");
+    addressForm.classList.toggle("hidden");
+    cancelNewAddress.classList.toggle("hidden");
+  };
+
+  addressBtn.addEventListener("click", toggleHiddenClass);
+  cancelNewAddress.addEventListener("click", toggleHiddenClass);
+
+  // ----------------------
+
+  const editAddressBtn = document.querySelectorAll('.address-edit-toggle');
+
+  editAddressBtn.forEach(function(button) {
+    button.addEventListener('click', function(evt) {
+      let formId = evt.target.dataset.formId;
+      let editFormContainer =document.getElementById("edit-address-form");
+      let editButton = document.getElementById('editFormButton_' + formId);
+      let editAddress = document.getElementById('editAddress_' + formId);
+      let isExpanded = editButton.getAttribute('aria-expanded') === 'true';
+
+      addressContainer.classList.toggle("hidden");
+      editFormContainer.classList.toggle("hidden");
+      editAddress.classList.toggle('hidden');
+      editButton.setAttribute('aria-expanded', !isExpanded);
+      editButton.focus();
+    });
+  });
+</script>

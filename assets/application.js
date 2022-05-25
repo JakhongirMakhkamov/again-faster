@@ -172,6 +172,8 @@ $(document).ready(function () {
     if (checkMiniCart) {
       e.preventDefault();
 
+      console.log(e);
+
       let removeLink = $(this);
       let removeQuery = removeLink.attr("href").split("change?")[1];
 

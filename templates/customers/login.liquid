@@ -6,28 +6,31 @@
         <div id="login__customer" class="login__customer">
             <h2 class="customer-template__title">Log in</h2>
             {% form 'customer_login', class: "customer-template__form" %}
-                {{ form.errors | default_errors }}
 
-                <div class="customer-template__form__item">
-                    <input class="customer-template__input" type="email" name="customer[email]" required placeholder=" " />
-                    <label class="customer-template__label" for="customer_email">
-                        <span class="customer-template__label__content">Email</span>
-                    </label>
-                </div>
+                <div class="login__form">
+                    <div class="customer-template__form__item">
+                        <input class="customer-template__input" type="email" name="customer[email]" required placeholder=" " />
+                        <label class="customer-template__label" for="customer_email">
+                            <span class="customer-template__label__content">Email</span>
+                        </label>
+                    </div>
+    
+                    <div class="customer-template__form__item">
+                        <input class="customer-template__input" type="password" name="customer[password]" required placeholder=" " />
+                        <label class="customer-template__label" for="customer_password">
+                            <span class="customer-template__label__content">Password</span>
+                        </label>
+                    </div>
+                    
+                    <span id="passReset" class="passReset">Forgot password?</span>
+    
+                    {{ form.errors | default_errors }}
 
-                <div class="customer-template__form__item">
-                    <input class="customer-template__input" type="password" name="customer[password]" required placeholder=" " />
-                    <label class="customer-template__label" for="customer_password">
-                        <span class="customer-template__label__content">Password</span>
-                    </label>
-                </div>
-                
-                <span id="passReset" class="passReset">Forgot password?</span>
-
-                <div class="form__actions">
-                    <input class="customer-template__form__btn" type="submit" value="Log In" />
-                    <p>Don't have an account yet?</p>
-                    <a class="customer-template__create-btn" href="/account/register">Create an account</a>
+                    <div class="form__actions">
+                        <input class="customer-template__form__btn" type="submit" value="Log In" />
+                        <p>Don't have an account yet?</p>
+                        <a class="customer-template__create-btn" href="{{ routes.account_register_url }}">Create an account</a>
+                    </div>
                 </div>
             {% endform %}
         </div>
@@ -48,11 +51,11 @@
                     </label>
                 </div>
 
-                <input class="customer-template__form__btn" type="submit" value="Submit" />
+                <input class="customer-template__form__btn" type="submit" value="Reset Password" />
                 <div>or <span id="cancel-reset" class="cancel-reset">Cancel</span></div>
             {% endform %}
         </div>
     </div>
 </section>
 
-{{ 'script-reset-password.js' | asset_url | script_tag }}
+{{ 'script-toggle-hiddenClass.js' | asset_url | script_tag }}

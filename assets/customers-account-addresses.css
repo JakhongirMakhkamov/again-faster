@@ -1,0 +1,102 @@
+.container--addresses {
+  display: flex;
+  padding-left: 0;
+  gap: 13.1rem;
+}
+
+.address__details,
+.address__form,
+.edit-address__form {
+  padding: 7.8rem 0 14.6rem;
+}
+
+.address__items {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 0 18rem;
+}
+
+.address__item {
+  margin-bottom: 3.6rem;
+}
+
+.address__name {
+  font-size: 1.6rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  line-height: 2.688rem;
+  letter-spacing: 0.1em;
+  margin-bottom: 2.7rem;
+}
+
+.customer__name {
+  font-weight: 600;
+  margin-bottom: 1.2rem;
+}
+
+.address__item__actions {
+  display: flex;
+  font-size: 1.2rem;
+  line-height: 2.01rem;
+  align-items: center;
+  gap: 0.6rem;
+  margin-top: 1.6rem;
+}
+
+.address__update__btn {
+  display: block;
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+
+.address__btn {
+  font-family: Open Sans, sans-serif;
+  font-size: 1.2rem;
+  line-height: 1.634rem;
+  letter-spacing: 0.175em;
+  text-transform: uppercase;
+  color: #fff;
+  background: #000;
+  cursor: pointer;
+  border: 0;
+  border: 1px solid #000;
+  transition: color 0.2s linear, background 0.2s linear;
+  padding: 1.4rem 4rem;
+}
+
+.address__btn:hover {
+  color: #000;
+  background: #fff;
+}
+
+.hidden {
+  display: none;
+}
+
+.address__form form {
+  display: flex;
+  flex-direction: column;
+}
+
+.address__form__title {
+  font-size: 1.6rem;
+  font-weight: 400;
+  line-height: 2.688rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 2.7rem;
+}
+
+.address__actions {
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+}
+
+.cancel__form {
+  background: none;
+  border: 0;
+  text-decoration: underline;
+  cursor: pointer;
+}

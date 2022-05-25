@@ -1,0 +1,11 @@
+{{ 'customers-account-sidebar.css' | asset_url | stylesheet_tag }}
+
+<div class="account__sidebar">
+  <h2 class="account__sidebar__title">My Account</h2>
+  <div class="account__sidebar__links">
+    <a href="{{ routes.account_url }}" class="account__sidebar__link {% if request.path == routes.account_url %}active{% endif %}">Account Overview</a>
+    {% assign lastOrder = customer.orders[0].customer_url | split: 'com' %}
+    <a href="{{ customer.orders[0].customer_url }}" class="account__sidebar__link {% if request.path == lastOrder[1] %}active{% endif %}">Order Details</a>
+    <a href="{{ routes.account_addresses_url }}" class="account__sidebar__link {% if request.path == routes.account_addresses_url %}active{% endif %}">Address Book</a>
+  </div>
+</div>
