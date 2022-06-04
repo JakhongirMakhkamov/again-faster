@@ -27,7 +27,7 @@
                 <a href="" class="search__action">{% render "icon-search" %}</a>
                 <a href="{% if customer %}{{ routes.account_url }}{% else %}{{ routes.account_login_url }}{% endif %}" class="account__action">{% render "icon-account" %}</a>
                 <a href="" class="bag__action js-cart-link">
-                    {% render "icon-bag" %} <span class="js-cart-item-count"></span>
+                    {% render "icon-bag" %}
                 </a>
             {% endif %}
         </div>

@@ -32,22 +32,22 @@
                 </div>
 
                 <div class="customer-template__form__item">
-                    <input id="password" class="customer-template__input" type="password" value="" name="customer[password]" size="30" required placeholder=" " />
+                    <input id="password" class="customer-template__input" type="password" value="" name="customer[password]" size="30" onkeyup="check_pass()" required placeholder=" " />
                     <label class="customer-template__password customer-template__label" for="password">
                         <span class="customer-template__label__content">Password</span>
                     </label>
                 </div>
 
                 <div class="customer-template__form__item">
-                    <input class="customer-template__input" type="password" value="" name="customer[password_confirmation]" id="confirm-password" size="30" required placeholder=" " />
-                    <label class="customer-template__password customer-template__label" for="password">
+                    <input id="confirm-password" class="customer-template__input" type="password" value="" name="customer[password_confirmation]" size="30" onkeyup="check_pass()" required placeholder=" " />
+                    <label class="customer-template__password customer-template__label" for="confirm-password">
                         <span class="customer-template__label__content">Confirm Password</span>
                     </label>
                 </div>
 
                 <div class="form__actions">
-                    <span id='message'></span>
-                    <input id="submit" class="customer-template__form__btn" type="submit" value="Create an Account" />
+                    <span id='registerFormErrorMessage'></span>
+                    <input id="registerForm"  class="customer-template__form__btn" type="submit" value="Create an Account" />
                     <p>Already have an account?</p>
                     <a class="customer-template__create-btn" href="{{ routes.account_login_url }}">Log in</a>
                 </div>
@@ -61,12 +61,13 @@
 const check_pass = function () {
     if (document.getElementById('password').value ==
         document.getElementById('confirm-password').value) {
-        document.getElementById('submit').disabled = false;
+        document.getElementById('registerForm').disabled = false;
+        document.getElementById('registerFormErrorMessage').innerText = '';
 
     } else {
-        document.getElementById('submit').disabled = true;
-        document.getElementById('message').style.color = '#da0000';
-        document.getElementById('message').innerText = 'Passwords do no match!';
+        document.getElementById('registerForm').disabled = true;
+        document.getElementById('registerFormErrorMessage').style.color = '#da0000';
+        document.getElementById('registerFormErrorMessage').innerText = 'Passwords do no match!';
     }
 }
 </script>

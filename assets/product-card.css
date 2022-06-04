@@ -93,8 +93,28 @@
 }
 
 .product-reviews {
+  min-height: 1.6rem;
   display: flex;
   align-items: center;
   gap: 0.4rem;
   margin: 0.8rem 0;
+}
+
+.collection__item .yotpo .text-m {
+  display: none;
+}
+
+.collection__item .yotpo-stars {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.product-reviews .yotpo.bottomLine .yotpo-bottomline .yotpo-icon-star,
+.product-reviews .yotpo.bottomLine .yotpo-bottomline .yotpo-icon-half-star,
+.product-reviews .yotpo.bottomLine .yotpo-bottomline .yotpo-icon-empty-star {
+  font-size: 1.6rem;
+}
+
+.yotpo .yotpo-icon {
+  font-size: 1.6rem;
 }

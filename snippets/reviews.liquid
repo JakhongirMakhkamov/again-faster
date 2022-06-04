@@ -1,0 +1,25 @@
+<div class="reviews__stats">
+    <div class="container container--reviews">
+        <div class="reviews__average"></div>
+    </div>
+</div>
+
+<script>
+    const reviewsAverageContainer = document.querySelector(".reviews__average")
+
+    const url = 'https://api-cdn.yotpo.com/v1/widget/iDzksa5EPpktPWLfPApe1o5sXzuu8pDF3gSdwEQN/products/{{ product.id }}/reviews.json';
+    const options = {
+        method: 'GET',
+        headers: {Accept: 'application/json', 'Content-Type': 'application/json'}
+    };
+
+    fetch(url, options)
+        .then(res => res.json())
+        .then(function (data) {
+            let avgScore = `<h2>${data.response.bottomline.average_score}<h2>`;
+            reviewsAverageContainer.insertAdjacentHTML("beforeend", avgScore);
+            console.log(data);
+        })
+        .catch(err => console.error('error:' + err));
+
+</script>

@@ -37,7 +37,8 @@
       <div class="customer__info">
         {% if customer.default_address %}
           <h2 class="account__content__title">Address Book</h2>
-          <h5 class="customer__name">{{ customer.name }}</h5>
+          {{ customer.default_address | format_address  }}
+          <!-- <h5 class="customer__name">{{ customer.name }}</h5>
           <div class="customer__adress">
             {% if customer.default_address.address2 != "" %}
               <span>{{ customer.default_address.address2 }}</span>
@@ -51,7 +52,9 @@
           <div class="customer__province">
             <span>{{ customer.default_address.province_code }}</span>
             <span>{{ customer.default_address.zip }}</span>
-          </div>
+          </div> -->
+        {% else %}
+          You haven't placed any addresses yet.
         {% endif %}
         <div class="account__overview__actions">
           <a class="account__adresses-btn" href="{{ routes.account_addresses_url }}">

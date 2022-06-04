@@ -26,12 +26,17 @@
         <h1 class="product__title">{{ product.title | upcase }}</h1>
         <p id="product-cost" class="product__cost">{{ current_variant.price | money }}</p>
         <div class="product__reviews">
-            <img src="{{ product.metafields.accentuate.review[0].src }}" alt="star-icon">
-            <img src="{{ product.metafields.accentuate.review[0].src }}" alt="star-icon">
-            <img src="{{ product.metafields.accentuate.review[0].src }}" alt="star-icon">
-            <img src="{{ product.metafields.accentuate.review[0].src }}" alt="star-icon">
-            <img src="{{ product.metafields.accentuate.review[0].src }}" alt="star-icon">
-            <p class="review__text">{{ section.settings.review }}</p>
+            <div class="yotpo bottomLine"
+            data-appkey="iDzksa5EPpktPWLfPApe1o5sXzuu8pDF3gSdwEQN"
+            data-domain="{{shop.permanent_domain | escape }}"
+            data-product-id="{{ product.id }}"
+            data-product-models="{{ product.id }}"
+            data-name="{{ product.title | escape }}"
+            data-url="{{ shop.url }}{{ product.url }}"
+            data-image-url="{{ product.featured_image | product_img_url: 'large' |replace: '?', '%3F' | replace: '&','%26'}}"
+            data-description="{{ product.description | escape }}"
+            data-bread-crumbs="{% for tag in product.tags %}{{ tag | escape }};{% endfor %}">
+            </div>
         </div>
         <div class="affirm-text">
             <img src= "{{ "affirm.png" | asset_url }}" alt="affirm-icon">

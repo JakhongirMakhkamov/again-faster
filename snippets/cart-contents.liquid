@@ -1,19 +1,47 @@
+{% capture bb_checkout_link %}{% render 'bb', type: 'bb_checkout_link' %}{% endcapture %}
+{% capture bb_total_price %}{% render 'bb', type: 'bb_total_price' %}{% endcapture %}{% assign bb_total_price = bb_total_price | plus: 0 %}
+
 {% if cart.item_count > 0 %}
   <div class="ajax__header">
     <h1 class="ajax__header-title">Cart</h1>
     <button class="ajax__close-btn">{% render "icon-close-cart" %}</button>
   </div>
-  <form class="cart__form" action="/cart" method="post" novalidate>
+  <form class="cart__form" action="{% if bb_checkout_link != blank %}{{ bb_checkout_link }}{% else %}/cart{% endif %}" method="post" novalidate>
+    {% render 'bb', type: 'cart' %}
     <fieldset id="cart-fieldset" class="js-cart-fieldset">
       <div class="ajax__items">
         {% for item in cart.items %}
-          {% render "cart-line-item", cartItem: item, forIndex: forloop.index %}
+          {% capture bb_original_line_price %}{% render 'bb', type: 'bb_original_line_price', item: item %}{% endcapture %}{% assign bb_original_line_price = bb_original_line_price | plus: 0 %}
+          {% capture bb_line_price %}{% render 'bb', type: 'bb_line_price', item: item %}{% endcapture %}{% assign bb_line_price = bb_line_price | plus: 0 %}
+          <div class="ajax__item">
+            <div class="ajax__product-img">
+                <img class="ajax__img" src="{{ item | image_url }}" alt="{{ item.title | escape }}">
+            </div>
+            <div class="ajax__content">
+                <h5 class="ajax__product__title">{{ item.product.title }}</h5>
+                <p class="ajax__variant__title">{{ item.variant.title }}</p>
+                {% assign quantityId = "updates_" | append: item.key %}
+                {% render "cart-quantity-picker", name: "updates[]", id: quantityId, value: item.quantity, min: 0, max: item.variant.inventory_quantity, field_class: "js-line-quantity" %}
+            </div>
+            <div class="ajax__controller">
+                <p class="ajax__line-price">
+                    {% if bb_original_line_price != bb_line_price %}
+                        {{ bb_original_line_price | money }}
+                    {% endif %}
+                    {{ bb_line_price | money }}
+                </p>
+                {% for discount in item.discounts %}{{ discount.title }}{% endfor %}
+                <a class="js-remove-line" href="/cart/change?line={{ forloop.index }}&amp;quantity=0">
+                    {% render "icon-remove-item-line" %}
+                </a>
+            </div>
+          </div>
         {% endfor %}
       </div>
       <div class="ajax__actions">
         <div class="ajax__subtotal">
           <p class="subtotal__title">Subtotal</p>
-          <p class="subtotal__price">{{ cart.total_price | money }}</p>
+          <p class="subtotal__price">{{ bb_total_price | money }}</p>
         </div>
         <p class="tax__info">Tax and shipping calculates at checkout.</p>
         <div class="affirm__info">

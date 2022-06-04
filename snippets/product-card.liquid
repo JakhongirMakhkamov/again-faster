@@ -4,11 +4,10 @@
     </a>
     <a href="{{ productItem.url | within: collection }}" class="product-title">{{ productItem.title | upcase }}</a>
     <div class="product-reviews">
-        <img src="{{ productItem.metafields.accentuate.review[0].src }}" alt="star-icon">
-        <img src="{{ productItem.metafields.accentuate.review[0].src }}" alt="star-icon">
-        <img src="{{ productItem.metafields.accentuate.review[0].src }}" alt="star-icon">
-        <img src="{{ productItem.metafields.accentuate.review[0].src }}" alt="star-icon">
-        <img src="{{ productItem.metafields.accentuate.review[0].src }}" alt="star-icon">
+        <div class="yotpo bottomLine"
+        data-product-id="{{ productItem.id }}"
+        data-name="{{ productItem.title | escape }}">
+        </div>
     </div>
     <p class="product-cost {% if productItem.available == false %}product-cost--sold{% endif %}">
         {% if productItem.price_varies %}

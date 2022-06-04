@@ -1,4 +1,7 @@
+{{ 'yotpo-reviews.css' | asset_url | stylesheet_tag }}
+
 {% render "product-header" %}
+{% render "product-info" %}
 
 {% schema %}
 {
@@ -6,12 +9,6 @@
    "class": "product",
    "tag": "section",
    "settings": [
-        {
-           "type": "text",
-           "id": "review",
-           "default": "18 reviews",
-           "label" : "Reviews"
-        },
         {
             "type": "text",
             "id": "affirm_text",

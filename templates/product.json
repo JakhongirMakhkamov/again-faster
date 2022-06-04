@@ -3,12 +3,9 @@
     "product": {
       "type": "product"
     },
-    "product-info": {
-      "type": "product-info"
-    },
     "ymal": {
       "type": "ymal"
     }
   },
-  "order": ["product", "product-info", "ymal"]
+  "order": ["product", "ymal"]
 }
