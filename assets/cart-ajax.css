@@ -1,3 +1,16 @@
+#cart {
+  padding: 8rem 0;
+}
+
+#cart .ajax__btn {
+  max-width: 44.2rem;
+  margin: 0 auto;
+}
+
+#cart .ajax__close-btn {
+  display: none;
+}
+
 .cart-ajax {
   width: 48rem;
   height: 100vh;
